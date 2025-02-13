@@ -16,3 +16,18 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
+
+@layer components {
+    .menu-button {
+        @apply w-[10.5rem] h-[4.8rem] rounded-[26.5px] bg-[#f87070]
+    }
+
+    .menu-text {
+        @apply font-[KumbhSans] text-[1.2rem] font-bold leading-normal text-[#1e213f]
+    }
+    
+    .menu {
+        @apply w-[32.7rem] h-[6.3rem] pt-[0.8rem] pb-[0.7rem] rounded-[31.5px] bg-[#161932] m-auto 
+        mt-[4.5rem] flex justify-center
+    }
+}
