@@ -33,4 +33,28 @@ body {
         @apply w-[32.7rem] h-[6.3rem] pt-[0.8rem] pb-[0.7rem] rounded-[31.5px] bg-[#161932] m-auto 
         mt-[4.5rem] flex justify-center
     }
+
+    .line {
+        @apply w-full h-[0.1rem] mt-[2.8rem] bg-[#e3e1e1]
+    }
+
+    .input-styles {
+        @apply w-[14rem] h-[4rem] rounded-[1rem] bg-[#eff1fa] text-[1.4rem] font-bold leading-normal text-[#1e213f] pl-[1.6rem]
+    }
+
+    .label-styles {
+        @apply text-[1.2rem] font-bold leading-normal text-[#1e213f] opacity-[0.4]
+    }
+
+    .parent-of-input {
+        @apply flex justify-between relative
+    }
+
+    .arrow-styles {
+        @apply w-[1.2rem] h-[0.4rem] 
+    }
+
+    .arrows-container {
+        @apply flex flex-col gap-[0.9rem] absolute top-[1.2rem] right-[1.6rem]
+    }
 }
