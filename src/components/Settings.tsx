@@ -2,7 +2,7 @@ import Cancel from "/images/icon-close.svg";
 
 const Settings: React.FC = () => {
   return (
-    <div className="h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem]">
+    <div className="h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] font-[KumbhSans]">
       <div className="w-[32.7rem] h-[54.9rem] rounded-[15px] pt-[2.4rem] px-[2.4rem] bg-white m-auto">
         <div>
           <h2>Settings</h2>
@@ -37,6 +37,7 @@ const Settings: React.FC = () => {
           <div></div>
           <div></div>
         </div>
+        <button>Apply</button>
       </div>
     </div>
   );
