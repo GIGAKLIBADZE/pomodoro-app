@@ -47,7 +47,7 @@ body {
     }
 
     .parent-of-input {
-        @apply flex justify-between relative
+        @apply flex justify-between items-center relative
     }
 
     .arrow-styles {
@@ -56,5 +56,26 @@ body {
 
     .arrows-container {
         @apply flex flex-col gap-[0.9rem] absolute top-[1.2rem] right-[1.6rem]
+    }
+
+    .sub-title {
+        @apply text-[1.1rem] font-bold tracking-[4.23px] text-center text-[#161932] mt-[2.4rem]
+    }
+
+    .font-container {
+        @apply w-[4rem] h-[4rem] rounded-[50%] bg-[#eff1fa] text-[1.5rem] leading-normal text-[#1e213f] 
+        flex justify-center items-center
+    }
+
+    .color-container {
+        @apply w-[4rem] h-[4rem] rounded-[50%] 
+    }
+
+    .fonts-and-colors-container {
+        @apply flex justify-center gap-[1.6rem] mt-[1.8rem]
+    }
+
+    .button-styles {
+        @apply w-[14rem] h-[5.3rem] rounded-[2.7rem] bg-[#f87070] text-[1.6rem] font-bold text-center text-[#fff]
     }
 }
