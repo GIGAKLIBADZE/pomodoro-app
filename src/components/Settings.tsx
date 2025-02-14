@@ -4,7 +4,9 @@ import Down from "/images/icon-arrow-down.svg";
 import { ChangeEvent, useReducer } from "react";
 import { reducer, initialState } from "../reducer";
 
-const Settings: React.FC = () => {
+const Settings: React.FC<{
+  setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ setShowSettings }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { startTime } = state;
@@ -30,7 +32,8 @@ const Settings: React.FC = () => {
             <img
               src={Cancel}
               alt="Cancel"
-              className="w-[1.3rem] h-[1.3rem] opacity-[0.5] "
+              className="w-[1.3rem] h-[1.3rem] opacity-[0.5]"
+              onClick={() => setShowSettings(false)}
             />
           </div>
           <div className="line"></div>
