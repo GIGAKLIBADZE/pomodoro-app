@@ -10,8 +10,6 @@ export type TState = {
 
 export function reducer(state: TState, action: { type: string, payload?: number }): TState {
     switch (action.type) {
-        case "inc":
-            return {...state, startTime: state.startTime + (action.payload ?? 1)}
         case "setTime":
             return {...state, startTime: action.payload ?? 1}
         default:

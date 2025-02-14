@@ -4,8 +4,11 @@ import ShowTimer from "../components/ShowTimer";
 import SettingsImage from "../components/SeettingsImage";
 import Settings from "../components/Settings";
 import { useState } from "react";
+import { useReducer } from "react";
+import { reducer, initialState } from "../reducer";
 
 const Pomodoro: React.FC = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [showSettings, setShowSettings] = useState<boolean>(false);
 
   return (
@@ -13,7 +16,13 @@ const Pomodoro: React.FC = () => {
       <HeaderAndMenu />
       <ShowTimer />
       <SettingsImage setShowSettings={setShowSettings} />
-      {showSettings ? <Settings setShowSettings={setShowSettings} /> : null}
+      {showSettings ? (
+        <Settings
+          setShowSettings={setShowSettings}
+          state={state}
+          dispatch={dispatch}
+        />
+      ) : null}
     </div>
   );
 };

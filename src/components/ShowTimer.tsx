@@ -6,10 +6,6 @@ const ShowTimer: React.FC = () => {
 
   const { startTime } = state;
 
-  function inc() {
-    dispatch({ type: "inc", payload: 1 });
-  }
-
   // console.log(startTime);
 
   return (
@@ -36,9 +32,7 @@ const ShowTimer: React.FC = () => {
         </svg>
       </div>
       <div>
-        <h4 className="text-[3rem] text-white" onClick={inc}>
-          {startTime}
-        </h4>
+        <h4 className="text-[3rem] text-white">{startTime}</h4>
         <p>PAUSE</p>
       </div>
     </div>
