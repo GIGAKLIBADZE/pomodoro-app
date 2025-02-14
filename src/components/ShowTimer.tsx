@@ -37,7 +37,7 @@ const ShowTimer: React.FC = () => {
       </div>
       <div>
         <h4 className="text-[3rem] text-white" onClick={inc}>
-          20:00
+          {startTime}
         </h4>
         <p>PAUSE</p>
       </div>

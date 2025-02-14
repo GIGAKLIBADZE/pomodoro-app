@@ -119,7 +119,10 @@ const Settings: React.FC<{
           </div>
         </div>
         <div className="flex justify-center relative">
-          <button className="button-styles absolute top-[-2.65rem]">
+          <button
+            className="button-styles absolute top-[-2.65rem]"
+            onClick={() => setShowSettings(false)}
+          >
             Apply
           </button>
         </div>
