@@ -14,7 +14,7 @@ const Settings: React.FC<{
     [
       action: {
         type: string;
-        payload?: number;
+        payload: number;
       }
     ]
   >;

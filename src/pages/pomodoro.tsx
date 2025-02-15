@@ -14,7 +14,7 @@ const Pomodoro: React.FC = () => {
   return (
     <div className="bg-[#1e213f] relative">
       <HeaderAndMenu />
-      <ShowTimer />
+      <ShowTimer state={state} dispatch={dispatch} />
       <SettingsImage setShowSettings={setShowSettings} />
       {showSettings ? (
         <Settings
