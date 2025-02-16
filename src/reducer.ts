@@ -1,13 +1,15 @@
 export const initialState = {
     startTime: 0,
     pause: true,
-    color: "orange"
+    color: "orange",
+    mode: "pomodoro"
 }
 
 export type TState = {
     startTime: number;
     pause: boolean;
     color: string
+    mode: string
 }
 
 export function reducer(state: TState, action: { type: string; payload?: number }): TState {
@@ -24,6 +26,12 @@ export function reducer(state: TState, action: { type: string; payload?: number 
             return {...state, color: "blue"}
         case "toPurple":
             return {...state, color: "purple"}
+        case "setPomodoro":
+            return {...state, mode: "pomodoro"}
+        case "setShort":
+            return {...state, mode: "short"}
+        case "setLong":
+            return {...state, mode: "long"}
         default:
             return state;
     }
