@@ -11,7 +11,6 @@ const ShowTimer: React.FC<{
       action: {
         type: string;
         payload?: number;
-        theme: string;
       }
     ]
   >;
@@ -43,14 +42,12 @@ const ShowTimer: React.FC<{
   function togglePause() {
     dispatch({
       type: "togglePause",
-      theme: "",
     });
   }
 
   function changeOffset() {
     dispatch({
       type: "changeOffset",
-      theme: "",
     });
   }
 

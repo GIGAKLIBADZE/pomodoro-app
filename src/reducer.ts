@@ -10,7 +10,7 @@ export type TState = {
     color: string
 }
 
-export function reducer(state: TState, action: { type: string; payload?: number, theme: string }): TState {
+export function reducer(state: TState, action: { type: string; payload?: number }): TState {
     switch (action.type) {
         case "setTime":
             return { ...state, startTime: action.payload ?? 1 };

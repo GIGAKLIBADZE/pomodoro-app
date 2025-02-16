@@ -11,7 +11,6 @@ const HeaderAndMenu: React.FC<{
       action: {
         type: string;
         payload?: number;
-        theme: string;
       }
     ]
   >;

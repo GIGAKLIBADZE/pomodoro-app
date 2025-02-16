@@ -16,7 +16,6 @@ const Settings: React.FC<{
       action: {
         type: string;
         payload?: number;
-        theme: string;
       }
     ]
   >;
@@ -27,7 +26,6 @@ const Settings: React.FC<{
     dispatch({
       type: "setTime",
       payload: Number(event.target.value),
-      theme: "",
     });
   }
 
@@ -124,7 +122,6 @@ const Settings: React.FC<{
               onClick={() => {
                 dispatch({
                   type: "toOrange",
-                  theme: "orange",
                 });
               }}
             ></div>
@@ -133,7 +130,6 @@ const Settings: React.FC<{
               onClick={() => {
                 dispatch({
                   type: "toBlue",
-                  theme: "blue",
                 });
               }}
             ></div>
@@ -142,7 +138,6 @@ const Settings: React.FC<{
               onClick={() => {
                 dispatch({
                   type: "toPurple",
-                  theme: "purple",
                 });
               }}
             ></div>
