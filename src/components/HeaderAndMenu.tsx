@@ -33,7 +33,7 @@ const HeaderAndMenu: React.FC<{
               : color === "purple" && mode === "pomodoro"
               ? "bg-[#d881f8]"
               : "bg-none"
-          }`}
+          } ${mode === "pomodoro" ? "text-[#1e213f]" : "text-[#d7e0ff]"}`}
           onClick={() => dispatch({ type: "setPomodoro" })}
         >
           pomodoro
@@ -47,7 +47,7 @@ const HeaderAndMenu: React.FC<{
               : color === "purple" && mode === "short"
               ? "bg-[#d881f8]"
               : "bg-none"
-          }`}
+          } ${mode === "short" ? "text-[#1e213f]" : "text-[#d7e0ff]"}`}
           onClick={() => dispatch({ type: "setShort" })}
         >
           short break
@@ -61,7 +61,7 @@ const HeaderAndMenu: React.FC<{
               : color === "purple" && mode === "long"
               ? "bg-[#d881f8]"
               : "bg-none"
-          }`}
+          } ${mode === "long" ? "text-[#1e213f]" : "text-[#d7e0ff]"}`}
           onClick={() => dispatch({ type: "setLong" })}
         >
           long break
