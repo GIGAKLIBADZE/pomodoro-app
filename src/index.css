@@ -20,10 +20,9 @@ body {
     background-color: rgba(10, 12, 28, 0.5)
 }
 
-
 @layer components {
     .menu-button {
-        @apply w-[10.5rem] h-[4.8rem] rounded-[26.5px] bg-[#f87070]
+        @apply w-[10.5rem] h-[4.8rem] rounded-[26.5px] 
     }
 
     .menu-text {

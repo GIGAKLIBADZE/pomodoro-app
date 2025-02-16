@@ -13,7 +13,7 @@ const Pomodoro: React.FC = () => {
 
   return (
     <div className="bg-[#1e213f] relative">
-      <HeaderAndMenu />
+      <HeaderAndMenu state={state} dispatch={dispatch} />
       <ShowTimer state={state} dispatch={dispatch} />
       <SettingsImage setShowSettings={setShowSettings} />
       {showSettings ? (
