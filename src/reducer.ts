@@ -2,7 +2,8 @@ export const initialState = {
     startTime: 0,
     pause: true,
     color: "orange",
-    mode: "pomodoro"
+    mode: "pomodoro",
+    font: 1
 }
 
 export type TState = {
@@ -10,6 +11,7 @@ export type TState = {
     pause: boolean;
     color: string
     mode: string
+    font: number
 }
 
 export function reducer(state: TState, action: { type: string; payload?: number }): TState {
@@ -32,6 +34,12 @@ export function reducer(state: TState, action: { type: string; payload?: number 
             return {...state, mode: "short"}
         case "setLong":
             return {...state, mode: "long"}
+        case "setKumbhSans":
+            return {...state, font: 1}
+        case "setRobotoSlab":
+            return {...state, font: 2}
+        case "setSpaceMono":
+            return {...state, font: 3}
         default:
             return state;
     }

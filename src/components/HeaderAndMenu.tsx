@@ -6,6 +6,7 @@ const HeaderAndMenu: React.FC<{
     pause: boolean;
     color: string;
     mode: string;
+    font: number;
   };
   dispatch: React.ActionDispatch<
     [
@@ -16,10 +17,20 @@ const HeaderAndMenu: React.FC<{
     ]
   >;
 }> = ({ state, dispatch }) => {
-  const { color, mode } = state;
+  const { color, mode, font } = state;
 
   return (
-    <div className="font-[KumbhSans] text-white">
+    <div
+      className={`text-white ${
+        font === 1
+          ? "font-[KumbhSans]"
+          : font === 2
+          ? "font-[RobotoSlab]"
+          : font === 3
+          ? "font-[SpaceMono]"
+          : ""
+      }`}
+    >
       <h1 className="text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem]">
         pomodoro
       </h1>

@@ -5,6 +5,7 @@ const ShowTimer: React.FC<{
     startTime: number;
     pause: boolean;
     color: string;
+    font: number;
   };
   dispatch: React.ActionDispatch<
     [
@@ -15,7 +16,7 @@ const ShowTimer: React.FC<{
     ]
   >;
 }> = ({ state, dispatch }) => {
-  const { startTime, pause, color } = state;
+  const { startTime, pause, color, font } = state;
 
   const [timeLeft, setTimeLeft] = useState<number>(startTime * 60);
 
@@ -52,7 +53,17 @@ const ShowTimer: React.FC<{
   }
 
   return (
-    <div className="w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative">
+    <div
+      className={`w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative ${
+        font === 1
+          ? "font-[KumbhSans]"
+          : font === 2
+          ? "font-[RobotoSlab]"
+          : font === 3
+          ? "font-[SpaceMono]"
+          : ""
+      }`}
+    >
       <div className="circle " style={{ color: "white" }} onClick={togglePause}>
         <svg width="100%" height="100%" viewBox="0 0 269 269">
           <circle
@@ -79,7 +90,7 @@ const ShowTimer: React.FC<{
                 : "#d881f8"
             }
             strokeDasharray={628.32}
-            strokeDashoffset={628.32 - (628.32 * timeLeft) / 60}
+            strokeDashoffset={628.32 - 628.32 * (timeLeft / 60)}
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>
         </svg>

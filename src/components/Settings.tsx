@@ -104,13 +104,24 @@ const Settings: React.FC<{
         <div>
           <h3 className="sub-title">FONT</h3>
           <div className="fonts-and-colors-container">
-            <div className="font-container font-[KumbhSans] font-normal">
+            <div
+              className="font-container font-[KumbhSans] font-normal"
+              onClick={() => dispatch({ type: "setKumbhSans" })}
+            >
               Aa
             </div>
-            <div className="font-container font-[RobotoSlab] font-normal">
+            <div
+              className="font-container font-[RobotoSlab] font-normal"
+              onClick={() => dispatch({ type: "setRobotoSlab" })}
+            >
               Aa
             </div>
-            <div className="font-container font-[SpaceMono] font-bold">Aa</div>
+            <div
+              className="font-container font-[SpaceMono] font-bold"
+              onClick={() => dispatch({ type: "setSpaceMono" })}
+            >
+              Aa
+            </div>
           </div>
         </div>
         <div className="line"></div>
