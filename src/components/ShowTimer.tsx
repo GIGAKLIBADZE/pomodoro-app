@@ -4,17 +4,19 @@ const ShowTimer: React.FC<{
   state: {
     startTime: number;
     pause: boolean;
+    color: string;
   };
   dispatch: React.ActionDispatch<
     [
       action: {
         type: string;
         payload?: number;
+        theme: string;
       }
     ]
   >;
 }> = ({ state, dispatch }) => {
-  const { startTime, pause } = state;
+  const { startTime, pause, color } = state;
 
   const [timeLeft, setTimeLeft] = useState<number>(startTime * 60);
 
@@ -39,12 +41,22 @@ const ShowTimer: React.FC<{
   };
 
   function togglePause() {
-    dispatch({ type: "togglePause" });
+    dispatch({
+      type: "togglePause",
+      theme: "",
+    });
+  }
+
+  function changeOffset() {
+    dispatch({
+      type: "changeOffset",
+      theme: "",
+    });
   }
 
   return (
-    <div className="w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem]">
-      <div className="circle" style={{ color: "white" }} onClick={togglePause}>
+    <div className="w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative">
+      <div className="circle " style={{ color: "white" }} onClick={togglePause}>
         <svg width="100%" height="100%" viewBox="0 0 269 269">
           <circle
             cx="134.5"
@@ -56,23 +68,32 @@ const ShowTimer: React.FC<{
             filter="url(#shadow)"
           ></circle>
           <circle
+            onClick={changeOffset}
             cx="134.5"
             cy="134.5"
             r="100"
             strokeWidth="10"
             fill="none"
-            stroke="#f87070"
+            stroke={
+              color === "orange"
+                ? "#f87070"
+                : color === "blue"
+                ? "#70f3f8"
+                : "#d881f8"
+            }
+            strokeDasharray={628.32}
+            strokeDashoffset={628.32 - (628.32 * timeLeft) / 60}
+            transform="rotate(-90, 134.5, 134.5)"
           ></circle>
         </svg>
-      </div>
-      <div>
-        <h4 className="text-[3rem] text-white">{toDate(timeLeft)}</h4>
-        {/* <button
-          className="mt-4 px-4 py-2 bg-gray-600 text-white rounded"
-          onClick={() => dispatch({ type: "togglePause" })}
-        >
-          {pause ? "Start" : "Pause"}
-        </button> */}
+        <div className="top-[8.6rem] absolute left-[50%] transform -translate-x-1/2 flex flex-col items-center">
+          <h4 className="h-[8rem] text-[8rem] fon-bold leading-normal tracking-[-4px] text-[#d7e0ff]">
+            {toDate(timeLeft)}
+          </h4>
+          <span className="w-[9.5rem] text-[1.4rem] font-bold leading-normal tracking-[13.13px] text-[#d7e0ff] mt-[3.5rem]">
+            PAUSE
+          </span>
+        </div>
       </div>
     </div>
   );

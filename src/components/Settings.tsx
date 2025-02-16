@@ -9,12 +9,14 @@ const Settings: React.FC<{
   state: {
     startTime: number;
     pause: boolean;
+    color: string;
   };
   dispatch: React.ActionDispatch<
     [
       action: {
         type: string;
-        payload: number;
+        payload?: number;
+        theme: string;
       }
     ]
   >;
@@ -22,7 +24,11 @@ const Settings: React.FC<{
   const { startTime } = state;
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
-    dispatch({ type: "setTime", payload: Number(event.target.value) });
+    dispatch({
+      type: "setTime",
+      payload: Number(event.target.value),
+      theme: "",
+    });
   }
 
   return (
@@ -113,9 +119,33 @@ const Settings: React.FC<{
         <div>
           <h3 className="sub-title mt-[1.6rem]">COLOR</h3>
           <div className="fonts-and-colors-container">
-            <div className="color-container bg-[#f87070]"></div>
-            <div className="color-container bg-[#70f3f8]"></div>
-            <div className="color-container bg-[#d881f8]"></div>
+            <div
+              className="color-container bg-[#f87070]"
+              onClick={() => {
+                dispatch({
+                  type: "toOrange",
+                  theme: "orange",
+                });
+              }}
+            ></div>
+            <div
+              className="color-container bg-[#70f3f8]"
+              onClick={() => {
+                dispatch({
+                  type: "toBlue",
+                  theme: "blue",
+                });
+              }}
+            ></div>
+            <div
+              className="color-container bg-[#d881f8]"
+              onClick={() => {
+                dispatch({
+                  type: "toPurple",
+                  theme: "purple",
+                });
+              }}
+            ></div>
           </div>
         </div>
       </div>
