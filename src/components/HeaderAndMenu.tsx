@@ -1,22 +1,6 @@
 import React from "react";
 
-const HeaderAndMenu: React.FC<{
-  state: {
-    startTime: number;
-    pause: boolean;
-    color: string;
-    mode: string;
-    font: number;
-  };
-  dispatch: React.ActionDispatch<
-    [
-      action: {
-        type: string;
-        payload?: number;
-      }
-    ]
-  >;
-}> = ({ state, dispatch }) => {
+const HeaderAndMenu: React.FC = () => {
   const { color, mode, font } = state;
 
   return (

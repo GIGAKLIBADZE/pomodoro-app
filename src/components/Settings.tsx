@@ -4,22 +4,7 @@ import Down from "/images/icon-arrow-down.svg";
 import { ChangeEvent } from "react";
 import { reducer, initialState } from "../reducer";
 
-const Settings: React.FC<{
-  setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
-  state: {
-    startTime: number;
-    pause: boolean;
-    color: string;
-  };
-  dispatch: React.ActionDispatch<
-    [
-      action: {
-        type: string;
-        payload?: number;
-      }
-    ]
-  >;
-}> = ({ setShowSettings, state, dispatch }) => {
+const Settings: React.FC = () => {
   const { startTime } = state;
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {

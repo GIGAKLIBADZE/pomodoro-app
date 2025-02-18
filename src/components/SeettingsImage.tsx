@@ -1,8 +1,6 @@
 import SettingsIcon from "/images/icon-settings.svg";
 
-const SettingsImage: React.FC<{
-  setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ setShowSettings }) => {
+const SettingsImage: React.FC = () => {
   return (
     <img
       src={SettingsIcon}

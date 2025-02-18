@@ -1,21 +1,6 @@
 import { useState, useEffect } from "react";
 
-const ShowTimer: React.FC<{
-  state: {
-    startTime: number;
-    pause: boolean;
-    color: string;
-    font: number;
-  };
-  dispatch: React.ActionDispatch<
-    [
-      action: {
-        type: string;
-        payload?: number;
-      }
-    ]
-  >;
-}> = ({ state, dispatch }) => {
+const ShowTimer: React.FC = () => {
   const { startTime, pause, color, font } = state;
 
   const [timeLeft, setTimeLeft] = useState<number>(startTime * 60);
@@ -29,10 +14,13 @@ const ShowTimer: React.FC<{
 
     const interval = setInterval(() => {
       setTimeLeft((prev) => Math.max(prev - 1, 0));
+
+      console.log(628.32 - 628.32 * (timeLeft / 60));
     }, 1000);
 
+    console.log(interval);
     return () => clearInterval(interval);
-  }, [pause, timeLeft]);
+  }, [pause, startTime]);
 
   const toDate = (seconds: number) => {
     const mins = Math.floor(seconds / 60);

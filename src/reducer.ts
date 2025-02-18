@@ -1,3 +1,5 @@
+import React from "react";
+
 export const initialState = {
     startTime: 0,
     pause: true,
@@ -13,6 +15,8 @@ export type TState = {
     mode: string
     font: number
 }
+
+export type TDispatch = React.Dispatch<{type: string; payload?: number}>
 
 export function reducer(state: TState, action: { type: string; payload?: number }): TState {
     switch (action.type) {
