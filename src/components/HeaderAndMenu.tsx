@@ -1,6 +1,9 @@
 import React from "react";
+import { useGeneral } from "../contexts/MainContext";
 
 const HeaderAndMenu: React.FC = () => {
+  // const { color, mode, font } = state;
+  const { dispatch, state } = useGeneral();
   const { color, mode, font } = state;
 
   return (

@@ -2,9 +2,10 @@ import Cancel from "/images/icon-close.svg";
 import Up from "/images/icon-arrow-up.svg";
 import Down from "/images/icon-arrow-down.svg";
 import { ChangeEvent } from "react";
-import { reducer, initialState } from "../reducer";
+import { useGeneral } from "../contexts/MainContext";
 
 const Settings: React.FC = () => {
+  const { state, dispatch, setShowSettings } = useGeneral();
   const { startTime } = state;
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {

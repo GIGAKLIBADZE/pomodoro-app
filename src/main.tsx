@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import Pomodoro from "./pages/pomodoro";
+import MainProvider from "./contexts/MainContext";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <MainProvider>
+      <RouterProvider router={router} />
+    </MainProvider>
   </StrictMode>
 );

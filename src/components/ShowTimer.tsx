@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useGeneral } from "../contexts/MainContext";
 
 const ShowTimer: React.FC = () => {
+  const { state, dispatch } = useGeneral();
   const { startTime, pause, color, font } = state;
 
   const [timeLeft, setTimeLeft] = useState<number>(startTime * 60);

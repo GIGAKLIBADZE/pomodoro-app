@@ -3,8 +3,10 @@ import HeaderAndMenu from "../components/HeaderAndMenu";
 import ShowTimer from "../components/ShowTimer";
 import SettingsImage from "../components/SeettingsImage";
 import Settings from "../components/Settings";
+import { useGeneral } from "../contexts/MainContext";
 
 const Pomodoro: React.FC = () => {
+  const { showSettings } = useGeneral();
   return (
     <div className="bg-[#1e213f] relative">
       <HeaderAndMenu />

@@ -33,3 +33,13 @@ export default function MainProvider({ children }: { children: ReactNode }) {
     </MainContext.Provider>
   );
 }
+
+export const useGeneral = () => {
+  const context = useContext(MainContext);
+
+  if (!context) {
+    throw new Error("Something went wrong.");
+  }
+
+  return context;
+};
