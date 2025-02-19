@@ -24,6 +24,10 @@ export const MainContext = createContext<{
   timerState: {
     startTime: 0,
     pause: false,
+    shortStartTime: 0,
+    shortPause: false,
+    longStartTime: 0,
+    longPause: false,
   },
   designDispatch: () => {},
   timerDispatch: () => {},

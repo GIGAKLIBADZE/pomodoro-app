@@ -82,7 +82,7 @@ const ShowTimer: React.FC = () => {
                 : "#d881f8"
             }
             strokeDasharray={628.32}
-            strokeDashoffset={628.32 - 628.32 * (timeLeft / 60)}
+            strokeDashoffset={628.32 * (1 - timeLeft / (startTime * 60))}
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>
         </svg>

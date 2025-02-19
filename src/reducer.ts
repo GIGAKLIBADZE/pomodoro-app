@@ -9,6 +9,10 @@ export const designInitialState = {
 export const timerInitialState = {
     startTime: 0,
     pause: true,
+    shortStartTime: 0,
+    shortPause: true,
+    longStartTime: 0,
+    longPause: true,
 }
 
 export function designReducer(designState: tDesignState, action: { type: string; payload?: number }): tDesignState {

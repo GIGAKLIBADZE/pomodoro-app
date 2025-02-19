@@ -1,6 +1,10 @@
 export type tTimerState = {
     startTime: number;
     pause: boolean;
+    shortStartTime: number;
+    shortPause: boolean;
+    longStartTime: number;
+    longPause: boolean;
 }
 
 export type tDesignState = {
