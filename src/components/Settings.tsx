@@ -7,11 +7,18 @@ import { useGeneral } from "../contexts/MainContext";
 const Settings: React.FC = () => {
   const { timerState, timerDispatch, designDispatch, setShowSettings } =
     useGeneral();
-  const { startTime } = timerState;
+  const { startTime, shortStartTime } = timerState;
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
     timerDispatch({
       type: "setTime",
+      payload: Number(event.target.value),
+    });
+  }
+
+  function defineShortTime(event: ChangeEvent<HTMLInputElement>) {
+    timerDispatch({
+      type: "setShortTime",
       payload: Number(event.target.value),
     });
   }
@@ -63,6 +70,8 @@ const Settings: React.FC = () => {
               min="1"
               max="5"
               className="input-styles"
+              onChange={defineShortTime}
+              value={shortStartTime}
             />
             <div className="arrows-container">
               <img src={Up} alt="Up" className="arrow-styles" />

@@ -2,31 +2,50 @@ import { useState, useEffect } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
 const ShowTimer: React.FC = () => {
-  const { timerState, timerDispatch, designState, designDispatch } =
-    useGeneral();
-  const { startTime, pause } = timerState;
-  const { color, font } = designState;
+  const { timerState, timerDispatch, designState } = useGeneral();
+  const { startTime, pause, shortStartTime, shortPause } = timerState;
+  const { color, font, mode } = designState;
 
   const [timeLeft, setTimeLeft] = useState<number>(startTime * 60);
+  const [shortTimeLeft, setShortTimeLeft] = useState<number>(
+    shortStartTime * 60
+  );
 
   useEffect(() => {
     setTimeLeft(startTime * 60);
   }, [startTime]);
 
   useEffect(() => {
+    setShortTimeLeft(shortStartTime * 60);
+  }, [shortStartTime]);
+
+  useEffect(() => {
     if (pause || timeLeft <= 0) return;
 
     const interval = setInterval(() => {
       setTimeLeft((prev) => Math.max(prev - 1, 0));
-
-      console.log(628.32 - 628.32 * (timeLeft / 60));
     }, 1000);
 
-    console.log(interval);
     return () => clearInterval(interval);
   }, [pause, startTime]);
 
+  useEffect(() => {
+    if (shortPause || shortTimeLeft <= 0) return;
+
+    const interval = setInterval(() => {
+      setShortTimeLeft((prev) => Math.max(prev - 1, 0));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [shortPause, shortStartTime]);
+
   const toDate = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+  };
+
+  const shortToDate = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
@@ -88,7 +107,9 @@ const ShowTimer: React.FC = () => {
         </svg>
         <div className="top-[8.6rem] absolute left-[50%] transform -translate-x-1/2 flex flex-col items-center">
           <h4 className="h-[8rem] text-[8rem] fon-bold leading-normal tracking-[-4px] text-[#d7e0ff]">
-            {toDate(timeLeft)}
+            {mode === "pomodoro"
+              ? toDate(timeLeft)
+              : shortToDate(shortTimeLeft)}
           </h4>
           <span className="w-[9.5rem] text-[1.4rem] font-bold leading-normal tracking-[13.13px] text-[#d7e0ff] mt-[3.5rem]">
             PAUSE
