@@ -1,34 +1,58 @@
 import { useReducer } from "react";
-import { reducer, initialState } from "../reducer";
+import {
+  designReducer,
+  designInitialState,
+  timerInitialState,
+  timerReducer,
+} from "../reducer";
 import { useState, createContext, useContext, ReactNode } from "react";
-// import { TState, TDispatch } from "../reducer";
-import { TState, TDispatch } from "../types/Types";
+import { tDesignState, tDispatch, tTimerState } from "../types/Types";
 
 export const MainContext = createContext<{
-  state: TState;
-  dispatch: TDispatch;
+  designState: tDesignState;
+  timerState: tTimerState;
+  designDispatch: tDispatch;
+  timerDispatch: tDispatch;
   showSettings: boolean;
   setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
-  state: {
-    startTime: 0,
-    pause: false,
+  designState: {
     color: "",
     mode: "",
     font: 0,
   },
-  dispatch: () => {},
+  timerState: {
+    startTime: 0,
+    pause: false,
+  },
+  designDispatch: () => {},
+  timerDispatch: () => {},
   showSettings: false,
   setShowSettings: () => {},
 });
 
 export default function MainProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [designState, designDispatch] = useReducer(
+    designReducer,
+    designInitialState
+  );
+
+  const [timerState, timerDispatch] = useReducer(
+    timerReducer,
+    timerInitialState
+  );
 
   const [showSettings, setShowSettings] = useState<boolean>(false);
   return (
     <MainContext.Provider
-      value={{ state, dispatch, showSettings, setShowSettings }}
+      value={{
+        designState,
+        designDispatch,
+        timerState,
+        timerDispatch,
+        showSettings,
+        setShowSettings,
+      }}
     >
       {children}
     </MainContext.Provider>

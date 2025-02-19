@@ -2,8 +2,8 @@ import React from "react";
 import { useGeneral } from "../contexts/MainContext";
 
 const HeaderAndMenu: React.FC = () => {
-  const { dispatch, state } = useGeneral();
-  const { color, mode, font } = state;
+  const { designDispatch, designState } = useGeneral();
+  const { color, mode, font } = designState;
 
   return (
     <div
@@ -31,7 +31,7 @@ const HeaderAndMenu: React.FC = () => {
               ? "bg-[#d881f8]"
               : "bg-none"
           } ${mode === "pomodoro" ? "text-[#1e213f]" : "text-[#d7e0ff]"}`}
-          onClick={() => dispatch({ type: "setPomodoro" })}
+          onClick={() => designDispatch({ type: "setPomodoro" })}
         >
           pomodoro
         </button>
@@ -45,7 +45,7 @@ const HeaderAndMenu: React.FC = () => {
               ? "bg-[#d881f8]"
               : "bg-none"
           } ${mode === "short" ? "text-[#1e213f]" : "text-[#d7e0ff]"}`}
-          onClick={() => dispatch({ type: "setShort" })}
+          onClick={() => designDispatch({ type: "setShort" })}
         >
           short break
         </button>
@@ -59,7 +59,7 @@ const HeaderAndMenu: React.FC = () => {
               ? "bg-[#d881f8]"
               : "bg-none"
           } ${mode === "long" ? "text-[#1e213f]" : "text-[#d7e0ff]"}`}
-          onClick={() => dispatch({ type: "setLong" })}
+          onClick={() => designDispatch({ type: "setLong" })}
         >
           long break
         </button>

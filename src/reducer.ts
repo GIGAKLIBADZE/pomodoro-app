@@ -1,51 +1,50 @@
-import React from "react";
-import { TState, } from "./types/Types";
+import { tDesignState, tTimerState} from "./types/Types";
 
-export const initialState = {
-    startTime: 0,
-    pause: true,
+export const designInitialState = {
     color: "orange",
     mode: "pomodoro",
     font: 1
 }
 
-// export type TState = {
-//     startTime: number;
-//     pause: boolean;
-//     color: string
-//     mode: string
-//     font: number
-// }
+export const timerInitialState = {
+    startTime: 0,
+    pause: true,
+}
 
-// export type TDispatch = React.Dispatch<{type: string; payload?: number}>
-
-export function reducer(state: TState, action: { type: string; payload?: number }): TState {
+export function designReducer(designState: tDesignState, action: { type: string; payload?: number }): tDesignState {
     switch (action.type) {
-        case "setTime":
-            return { ...state, startTime: action.payload ?? 1 };
-        case "togglePause":
-            return {...state, pause: !state.pause}
-        case "changeOffset":
-            return {...state, startTime: action.payload ?? 1}
         case "toOrange":
-            return {...state, color: "orange"}
+            return {...designState, color: "orange"}
         case "toBlue":
-            return {...state, color: "blue"}
+            return {...designState, color: "blue"}
         case "toPurple":
-            return {...state, color: "purple"}
+            return {...designState, color: "purple"}
         case "setPomodoro":
-            return {...state, mode: "pomodoro"}
+            return {...designState, mode: "pomodoro"}
         case "setShort":
-            return {...state, mode: "short"}
+            return {...designState, mode: "short"}
         case "setLong":
-            return {...state, mode: "long"}
+            return {...designState, mode: "long"}
         case "setKumbhSans":
-            return {...state, font: 1}
+            return {...designState, font: 1}
         case "setRobotoSlab":
-            return {...state, font: 2}
+            return {...designState, font: 2}
         case "setSpaceMono":
-            return {...state, font: 3}
+            return {...designState, font: 3}
         default:
-            return state;
+            return designState;
+    }
+}
+
+export function timerReducer(timerState: tTimerState, action: { type: string; payload?: number }): tTimerState {
+    switch (action.type) {
+    case "setTime":
+        return { ...timerState, startTime: action.payload ?? 1 };
+    case "togglePause":
+        return {...timerState, pause: !timerState.pause}
+    case "changeOffset":
+        return {...timerState, startTime: action.payload ?? 1}
+    default:
+        return timerState;
     }
 }
