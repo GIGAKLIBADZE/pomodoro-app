@@ -10,7 +10,3 @@ export type tDesignState = {
 }
 
 export type tDispatch = React.Dispatch<{type: string; payload?: number}>
-// export type tDispatch = React.ActionDispatch<[action: {
-//     type: string;
-//     payload?: number;
-// }]>
