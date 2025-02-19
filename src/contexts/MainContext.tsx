@@ -1,7 +1,8 @@
 import { useReducer } from "react";
 import { reducer, initialState } from "../reducer";
 import { useState, createContext, useContext, ReactNode } from "react";
-import { TState, TDispatch } from "../reducer";
+// import { TState, TDispatch } from "../reducer";
+import { TState, TDispatch } from "../types/Types";
 
 export const MainContext = createContext<{
   state: TState;
