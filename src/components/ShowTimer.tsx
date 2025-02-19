@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
 const ShowTimer: React.FC = () => {
-  const { state, dispatch } = useGeneral();
-  const { startTime, pause, color, font } = state;
+  const { timerState, timerDispatch, designState, designDispatch } =
+    useGeneral();
+  const { startTime, pause } = timerState;
+  const { color, font } = designState;
 
   const [timeLeft, setTimeLeft] = useState<number>(startTime * 60);
 
@@ -31,13 +33,13 @@ const ShowTimer: React.FC = () => {
   };
 
   function togglePause() {
-    dispatch({
+    timerDispatch({
       type: "togglePause",
     });
   }
 
   function changeOffset() {
-    dispatch({
+    timerDispatch({
       type: "changeOffset",
     });
   }
