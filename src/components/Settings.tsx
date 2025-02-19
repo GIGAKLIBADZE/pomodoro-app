@@ -5,7 +5,8 @@ import { ChangeEvent } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
 const Settings: React.FC = () => {
-  const { timerState, timerDispatch, setShowSettings } = useGeneral();
+  const { timerState, timerDispatch, designDispatch, setShowSettings } =
+    useGeneral();
   const { startTime } = timerState;
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
@@ -92,19 +93,19 @@ const Settings: React.FC = () => {
           <div className="fonts-and-colors-container">
             <div
               className="font-container font-[KumbhSans] font-normal"
-              onClick={() => timerDispatch({ type: "setKumbhSans" })}
+              onClick={() => designDispatch({ type: "setKumbhSans" })}
             >
               Aa
             </div>
             <div
               className="font-container font-[RobotoSlab] font-normal"
-              onClick={() => timerDispatch({ type: "setRobotoSlab" })}
+              onClick={() => designDispatch({ type: "setRobotoSlab" })}
             >
               Aa
             </div>
             <div
               className="font-container font-[SpaceMono] font-bold"
-              onClick={() => timerDispatch({ type: "setSpaceMono" })}
+              onClick={() => designDispatch({ type: "setSpaceMono" })}
             >
               Aa
             </div>
@@ -117,7 +118,7 @@ const Settings: React.FC = () => {
             <div
               className="color-container bg-[#f87070]"
               onClick={() => {
-                timerDispatch({
+                designDispatch({
                   type: "toOrange",
                 });
               }}
@@ -125,7 +126,7 @@ const Settings: React.FC = () => {
             <div
               className="color-container bg-[#70f3f8]"
               onClick={() => {
-                timerDispatch({
+                designDispatch({
                   type: "toBlue",
                 });
               }}
@@ -133,7 +134,7 @@ const Settings: React.FC = () => {
             <div
               className="color-container bg-[#d881f8]"
               onClick={() => {
-                timerDispatch({
+                designDispatch({
                   type: "toPurple",
                 });
               }}
