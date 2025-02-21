@@ -30,14 +30,23 @@ const ShowTimer: React.FC = () => {
   }, [pause, startTime]);
 
   useEffect(() => {
-    if (shortPause || shortTimeLeft <= 0) return;
+    if (!shortPause || shortTimeLeft <= 0) return;
 
     const interval = setInterval(() => {
       setShortTimeLeft((prev) => Math.max(prev - 1, 0));
+      if (mode === "pomodoro") {
+        timerDispatch({
+          type: "switchPomodoro",
+        });
+      }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [shortPause, shortStartTime]);
+
+    // if (mode === "pomodoro") {
+    //   return () => clearInterval(interval);
+    // }
+  }, [shortPause, shortStartTime, mode]);
 
   const toDate = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -54,6 +63,12 @@ const ShowTimer: React.FC = () => {
   function togglePause() {
     timerDispatch({
       type: "togglePause",
+    });
+  }
+
+  function toggleShortPause() {
+    timerDispatch({
+      type: "toggleShortPause",
     });
   }
 
@@ -75,15 +90,40 @@ const ShowTimer: React.FC = () => {
           : ""
       }`}
     >
-      <div className="circle " style={{ color: "white" }} onClick={togglePause}>
-        <svg width="100%" height="100%" viewBox="0 0 269 269">
+      <div
+        style={{
+          color: "white",
+          boxShadow: "50px 50px 100px 0 #121530, -50px -50px 100px 0 #272c5a",
+          backgroundImage: "linear-gradient(315deg, #2e325a, #0e112a)",
+          borderRadius: "50%",
+        }}
+        onClick={mode === "pomodoro" ? togglePause : toggleShortPause}
+      >
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 269 269"
+          style={
+            {
+              // boxShadow: "50px 50px 100px 0 #121530, -50px -50px 100px 0 #272c5a",
+            }
+          }
+        >
           <circle
+            style={
+              {
+                // boxShadow: "50px 50px 100px 0 red, -50px -50px 100px 0 green",
+              }
+            }
             cx="134.5"
             cy="134.5"
             r="124.5"
             strokeWidth="20"
             fill="none"
             stroke="#272c5a"
+            strokeDasharray={782.68}
+            strokeDashoffset={781.68 * (1 - timeLeft / (startTime * 60))}
+            transform="rotate(-90, 134.5, 134.5)"
             filter="url(#shadow)"
           ></circle>
           <circle
@@ -101,7 +141,11 @@ const ShowTimer: React.FC = () => {
                 : "#d881f8"
             }
             strokeDasharray={628.32}
-            strokeDashoffset={628.32 * (1 - timeLeft / (startTime * 60))}
+            strokeDashoffset={
+              mode === "pomodoro"
+                ? 628.32 * (1 - timeLeft / (startTime * 60))
+                : 628.32 * (1 - shortTimeLeft / (shortStartTime * 60))
+            }
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>
         </svg>
