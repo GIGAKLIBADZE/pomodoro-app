@@ -63,13 +63,18 @@ const Settings: React.FC = () => {
               pomodoro
             </label>
             <input
-              // type="number"
               id="pomodoro"
               name="pomodoro"
               min="1"
               max="60"
               className="input-styles"
-              onChange={defineTime}
+              onChange={(e) => {
+                let value = e.target.value.replace(/\D/g, "");
+                if (value.length > 2) value = value.slice(0, 2);
+                defineTime({
+                  target: { value },
+                } as ChangeEvent<HTMLInputElement>);
+              }}
               value={startTime}
             />
             <div className="arrows-container">
@@ -82,13 +87,18 @@ const Settings: React.FC = () => {
               short break
             </label>
             <input
-              // type="number"
               id="short"
               name="short"
               min="1"
               max="5"
               className="input-styles"
-              onChange={defineShortTime}
+              onChange={(e) => {
+                let value = e.target.value.replace(/\D/g, "");
+                if (value.length > 2) value = value.slice(0, 2);
+                defineShortTime({
+                  target: { value },
+                } as ChangeEvent<HTMLInputElement>);
+              }}
               value={shortStartTime}
             />
             <div className="arrows-container">
@@ -101,7 +111,6 @@ const Settings: React.FC = () => {
               long break
             </label>
             <input
-              // type="number"
               id="long"
               name="long"
               min="10"
