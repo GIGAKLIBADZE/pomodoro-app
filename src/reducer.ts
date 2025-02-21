@@ -49,7 +49,11 @@ export function timerReducer(timerState: tTimerState, action: { type: string; pa
     case "togglePause":
         return {...timerState, pause: !timerState.pause}
     case "toggleShortPause":
-        return {...timerState, shortPause: !timerState.pause}
+        return {...timerState, shortPause: !timerState.shortPause}
+    case "pausePomodoro":
+        return {...timerState, pause: true}
+    case "continuePomodoro":
+        return {...timerState, pause: false}
     case "changeOffset":
         return {...timerState, startTime: action.payload ?? 1}
     default:

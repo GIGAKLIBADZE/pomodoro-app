@@ -30,22 +30,13 @@ const ShowTimer: React.FC = () => {
   }, [pause, startTime]);
 
   useEffect(() => {
-    if (!shortPause || shortTimeLeft <= 0) return;
+    if (shortPause || shortTimeLeft <= 0) return;
 
     const interval = setInterval(() => {
       setShortTimeLeft((prev) => Math.max(prev - 1, 0));
-      if (mode === "pomodoro") {
-        timerDispatch({
-          type: "switchPomodoro",
-        });
-      }
     }, 1000);
 
     return () => clearInterval(interval);
-
-    // if (mode === "pomodoro") {
-    //   return () => clearInterval(interval);
-    // }
   }, [shortPause, shortStartTime, mode]);
 
   const toDate = (seconds: number) => {
@@ -70,13 +61,35 @@ const ShowTimer: React.FC = () => {
     timerDispatch({
       type: "toggleShortPause",
     });
+
+    if (shortPause === true) {
+      timerDispatch({
+        type: "pausePomodoro",
+      });
+    } else {
+      timerDispatch({
+        type: "continuePomodoro",
+      });
+    }
   }
+
+  // function pausePomodoro() {
+  //   timerDispatch({
+  //     type: "pausePomodoro",
+  //   });
+  // }
 
   function changeOffset() {
     timerDispatch({
       type: "changeOffset",
     });
   }
+
+  // function pausingLogin() {
+  //   if (mode !== "pomodoro") {
+
+  //   }
+  // }
 
   return (
     <div
