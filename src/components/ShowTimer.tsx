@@ -33,7 +33,16 @@ const ShowTimer: React.FC = () => {
     if (shortPause || shortTimeLeft <= 0) return;
 
     const interval = setInterval(() => {
-      setShortTimeLeft((prev) => Math.max(prev - 1, 0));
+      setShortTimeLeft((prev) => {
+        console.log(prev);
+        if (prev === 0) {
+          timerDispatch({
+            type: "continuePomodoro",
+          });
+          clearInterval(interval);
+        }
+        return Math.max(prev - 1, 0);
+      });
     }, 1000);
 
     return () => clearInterval(interval);
@@ -73,23 +82,11 @@ const ShowTimer: React.FC = () => {
     }
   }
 
-  // function pausePomodoro() {
-  //   timerDispatch({
-  //     type: "pausePomodoro",
-  //   });
-  // }
-
   function changeOffset() {
     timerDispatch({
       type: "changeOffset",
     });
   }
-
-  // function pausingLogin() {
-  //   if (mode !== "pomodoro") {
-
-  //   }
-  // }
 
   return (
     <div
