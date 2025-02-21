@@ -5,9 +5,15 @@ import { ChangeEvent } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
 const Settings: React.FC = () => {
-  const { timerState, timerDispatch, designDispatch, setShowSettings } =
-    useGeneral();
+  const {
+    timerState,
+    designState,
+    timerDispatch,
+    designDispatch,
+    setShowSettings,
+  } = useGeneral();
   const { startTime, shortStartTime } = timerState;
+  const { font } = designState;
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
     timerDispatch({
@@ -24,7 +30,19 @@ const Settings: React.FC = () => {
   }
 
   return (
-    <div className="h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] font-[KumbhSans]">
+    <div
+      style={{
+        fontFamily:
+          font === 1
+            ? "Kumbh Sans"
+            : font === 2
+            ? "Roboto Slab"
+            : font === 3
+            ? "Space Mono"
+            : "",
+      }}
+      className="h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] font-[KumbhSans]"
+    >
       <div className="w-[32.7rem] rounded-[15px] pt-[2.4rem] pb-[5.9rem] bg-white m-auto">
         <div className="px-[2.4rem] flex justify-between items-center">
           <h2 className="text-[2rem] font-bold text-[#161932] leading-normal">

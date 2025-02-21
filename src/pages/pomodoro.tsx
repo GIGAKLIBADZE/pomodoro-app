@@ -6,9 +6,23 @@ import Settings from "../components/Settings";
 import { useGeneral } from "../contexts/MainContext";
 
 const Pomodoro: React.FC = () => {
-  const { showSettings } = useGeneral();
+  const { showSettings, designState } = useGeneral();
+  const { font } = designState;
+
   return (
-    <div className="bg-[#1e213f] relative">
+    <div
+      style={{
+        fontFamily:
+          font === 1
+            ? "Kumbh Sans"
+            : font === 2
+            ? "Roboto Slab"
+            : font === 3
+            ? "Space Mono"
+            : "",
+      }}
+      className="bg-[#1e213f] relative"
+    >
       <HeaderAndMenu />
       <ShowTimer />
       <SettingsImage />

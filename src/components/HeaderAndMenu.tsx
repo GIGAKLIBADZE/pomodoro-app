@@ -6,17 +6,7 @@ const HeaderAndMenu: React.FC = () => {
   const { color, mode, font } = designState;
 
   return (
-    <div
-      className={`text-white ${
-        font === 1
-          ? "font-[KumbhSans]"
-          : font === 2
-          ? "font-[RobotoSlab]"
-          : font === 3
-          ? "font-[SpaceMono]"
-          : ""
-      }`}
-    >
+    <div className={`text-white `}>
       <h1 className="text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem]">
         pomodoro
       </h1>

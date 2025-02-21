@@ -100,15 +100,7 @@ const ShowTimer: React.FC = () => {
 
   return (
     <div
-      className={`w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative ${
-        font === 1
-          ? "font-[KumbhSans]"
-          : font === 2
-          ? "font-[RobotoSlab]"
-          : font === 3
-          ? "font-[SpaceMono]"
-          : ""
-      }`}
+      className={`w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative`}
     >
       <div
         style={{
