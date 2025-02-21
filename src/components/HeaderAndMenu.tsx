@@ -3,7 +3,7 @@ import { useGeneral } from "../contexts/MainContext";
 
 const HeaderAndMenu: React.FC = () => {
   const { designDispatch, designState } = useGeneral();
-  const { color, mode, font } = designState;
+  const { color, font, mode } = designState;
 
   return (
     <div className={`text-white `}>
@@ -12,6 +12,16 @@ const HeaderAndMenu: React.FC = () => {
       </h1>
       <div className="menu">
         <button
+          style={{
+            fontFamily:
+              font === 1
+                ? "Kumbh Sans"
+                : font === 2
+                ? "Roboto Slab"
+                : font === 3
+                ? "Space Mono"
+                : "",
+          }}
           className={`menu-button menu-text ${
             color === "orange" && mode === "pomodoro"
               ? "bg-[#f87070]"
@@ -26,6 +36,16 @@ const HeaderAndMenu: React.FC = () => {
           pomodoro
         </button>
         <button
+          style={{
+            fontFamily:
+              font === 1
+                ? "Kumbh Sans"
+                : font === 2
+                ? "Roboto Slab"
+                : font === 3
+                ? "Space Mono"
+                : "",
+          }}
           className={`menu-button menu-text ${
             color === "orange" && mode === "short"
               ? "bg-[#f87070]"
@@ -40,6 +60,16 @@ const HeaderAndMenu: React.FC = () => {
           short break
         </button>
         <button
+          style={{
+            fontFamily:
+              font === 1
+                ? "Kumbh Sans"
+                : font === 2
+                ? "Roboto Slab"
+                : font === 3
+                ? "Space Mono"
+                : "",
+          }}
           className={`menu-button menu-text ${
             color === "orange" && mode === "long"
               ? "bg-[#f87070]"

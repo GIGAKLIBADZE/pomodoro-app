@@ -4,7 +4,7 @@ import { useGeneral } from "../contexts/MainContext";
 const ShowTimer: React.FC = () => {
   const { timerState, timerDispatch, designState } = useGeneral();
   const { startTime, pause, shortStartTime, shortPause } = timerState;
-  const { color, font, mode } = designState;
+  const { color, mode } = designState;
 
   const [timeLeft, setTimeLeft] = useState<number>(Number(startTime) * 60);
   const [shortTimeLeft, setShortTimeLeft] = useState<number>(
