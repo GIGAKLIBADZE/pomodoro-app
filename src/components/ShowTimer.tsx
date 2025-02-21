@@ -160,6 +160,7 @@ const ShowTimer: React.FC = () => {
                 ? 628.32 * (1 - timeLeft / (Number(startTime) * 60))
                 : 628.32 * (1 - shortTimeLeft / (Number(shortStartTime) * 60))
             }
+            strokeLinecap="round"
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>
         </svg>
