@@ -6,17 +6,17 @@ const ShowTimer: React.FC = () => {
   const { startTime, pause, shortStartTime, shortPause } = timerState;
   const { color, font, mode } = designState;
 
-  const [timeLeft, setTimeLeft] = useState<number>(startTime * 60);
+  const [timeLeft, setTimeLeft] = useState<number>(Number(startTime) * 60);
   const [shortTimeLeft, setShortTimeLeft] = useState<number>(
-    shortStartTime * 60
+    Number(shortStartTime) * 60
   );
 
   useEffect(() => {
-    setTimeLeft(startTime * 60);
+    setTimeLeft(Number(startTime) * 60);
   }, [startTime]);
 
   useEffect(() => {
-    setShortTimeLeft(shortStartTime * 60);
+    setShortTimeLeft(Number(shortStartTime) * 60);
   }, [shortStartTime]);
 
   useEffect(() => {
@@ -134,7 +134,9 @@ const ShowTimer: React.FC = () => {
             fill="none"
             stroke="#272c5a"
             strokeDasharray={782.68}
-            strokeDashoffset={781.68 * (1 - timeLeft / (startTime * 60))}
+            strokeDashoffset={
+              781.68 * (1 - timeLeft / (Number(startTime) * 60))
+            }
             transform="rotate(-90, 134.5, 134.5)"
             filter="url(#shadow)"
           ></circle>
@@ -155,8 +157,8 @@ const ShowTimer: React.FC = () => {
             strokeDasharray={628.32}
             strokeDashoffset={
               mode === "pomodoro"
-                ? 628.32 * (1 - timeLeft / (startTime * 60))
-                : 628.32 * (1 - shortTimeLeft / (shortStartTime * 60))
+                ? 628.32 * (1 - timeLeft / (Number(startTime) * 60))
+                : 628.32 * (1 - shortTimeLeft / (Number(shortStartTime) * 60))
             }
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>

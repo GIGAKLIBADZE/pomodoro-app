@@ -32,20 +32,20 @@ export function designReducer(designState: tDesignState, action: { type: string;
 }
 
 export const timerInitialState = {
-    startTime: 0,
+    startTime: "",
     pause: true,
-    shortStartTime: 0,
+    shortStartTime: "",
     shortPause: true,
-    longStartTime: 0,
+    longStartTime: "",
     longPause: true,
 }
 
-export function timerReducer(timerState: tTimerState, action: { type: string; payload?: number }): tTimerState {
+export function timerReducer(timerState: tTimerState, action: { type: string; payload?: string }): tTimerState {
     switch (action.type) {
     case "setTime":
-        return {...timerState, startTime: action.payload ?? 1 };
+        return {...timerState, startTime: action.payload ?? "1" };
     case "setShortTime":
-        return {...timerState, shortStartTime: action.payload ?? 1}
+        return {...timerState, shortStartTime: action.payload ?? "1"}
     case "togglePause":
         return {...timerState, pause: !timerState.pause}
     case "toggleShortPause":
@@ -59,7 +59,7 @@ export function timerReducer(timerState: tTimerState, action: { type: string; pa
     case "continueShortTime":
         return {...timerState, shortPause: false}
     case "changeOffset":
-        return {...timerState, startTime: action.payload ?? 1}
+        return {...timerState, startTime: action.payload ?? "1"}
     default:
         return timerState;
     }

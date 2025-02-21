@@ -18,14 +18,14 @@ const Settings: React.FC = () => {
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
     timerDispatch({
       type: "setTime",
-      payload: Number(event.target.value),
+      payload: event.target.value,
     });
   }
 
   function defineShortTime(event: ChangeEvent<HTMLInputElement>) {
     timerDispatch({
       type: "setShortTime",
-      payload: Number(event.target.value),
+      payload: event.target.value,
     });
   }
 
@@ -63,7 +63,7 @@ const Settings: React.FC = () => {
               pomodoro
             </label>
             <input
-              type="number"
+              // type="number"
               id="pomodoro"
               name="pomodoro"
               min="1"
@@ -82,7 +82,7 @@ const Settings: React.FC = () => {
               short break
             </label>
             <input
-              type="number"
+              // type="number"
               id="short"
               name="short"
               min="1"
@@ -101,7 +101,7 @@ const Settings: React.FC = () => {
               long break
             </label>
             <input
-              type="number"
+              // type="number"
               id="long"
               name="long"
               min="10"

@@ -1,9 +1,9 @@
 export type tTimerState = {
-    startTime: number;
+    startTime: string;
     pause: boolean;
-    shortStartTime: number;
+    shortStartTime: string;
     shortPause: boolean;
-    longStartTime: number;
+    longStartTime: string;
     longPause: boolean;
 }
 
@@ -13,4 +13,4 @@ export type tDesignState = {
     font: number
 }
 
-export type tDispatch = React.Dispatch<{type: string; payload?: number}>
+export type tDispatch = React.Dispatch<{type: string; payload?: string}>
