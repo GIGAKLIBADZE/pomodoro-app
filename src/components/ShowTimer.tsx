@@ -64,6 +64,16 @@ const ShowTimer: React.FC = () => {
     timerDispatch({
       type: "togglePause",
     });
+
+    if (pause === true) {
+      timerDispatch({
+        type: "pauseShortTime",
+      });
+    } else {
+      timerDispatch({
+        type: "continueShortTime",
+      });
+    }
   }
 
   function toggleShortPause() {

@@ -54,6 +54,10 @@ export function timerReducer(timerState: tTimerState, action: { type: string; pa
         return {...timerState, pause: true}
     case "continuePomodoro":
         return {...timerState, pause: false}
+    case "pauseShortTime":
+        return {...timerState, shortPause: true}
+    case "continueShortTime":
+        return {...timerState, shortPause: false}
     case "changeOffset":
         return {...timerState, startTime: action.payload ?? 1}
     default:
