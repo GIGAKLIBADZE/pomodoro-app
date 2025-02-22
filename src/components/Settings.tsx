@@ -1,7 +1,7 @@
 import Cancel from "/images/icon-close.svg";
 import Up from "/images/icon-arrow-up.svg";
 import Down from "/images/icon-arrow-down.svg";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
 interface SettingsProps {
@@ -17,7 +17,13 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
     setShowSettings,
   } = useGeneral();
   const { startTime, shortStartTime, longStartTime } = timerState;
-  const { font } = designState;
+  const { font, color } = designState;
+
+  const [temptime, setTempTime] = useState<string>(startTime);
+  const [tempShortTime, setTempShortTime] = useState<string>(shortStartTime);
+  const [tempLongTime, setTempLongTime] = useState<string>(longStartTime);
+  const [tempFont, setTempFont] = useState<number>(font);
+  const [tempColor, setTempColor] = useState<string>(color);
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
     timerDispatch({
@@ -37,6 +43,42 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
     timerDispatch({
       type: "setLongTime",
       payload: event.target.value,
+    });
+  }
+
+  function kumbhSans() {
+    designDispatch({
+      type: "setKumbhSans",
+    });
+  }
+
+  function robotoSlab() {
+    designDispatch({
+      type: "setRobotoSlab",
+    });
+  }
+
+  function spaceMono() {
+    designDispatch({
+      type: "setSpaceMono",
+    });
+  }
+
+  function toOrange() {
+    designDispatch({
+      type: "toOrange",
+    });
+  }
+
+  function toBlue() {
+    designDispatch({
+      type: "toBlue",
+    });
+  }
+
+  function toPurple() {
+    designDispatch({
+      type: "toPurple",
     });
   }
 
@@ -149,21 +191,21 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
             <div
               style={{ fontFamily: "Kumbh Sans" }}
               className="font-container font-normal"
-              onClick={() => designDispatch({ type: "setKumbhSans" })}
+              onClick={kumbhSans}
             >
               Aa
             </div>
             <div
               style={{ fontFamily: "Roboto Slab" }}
               className="font-container font-normal"
-              onClick={() => designDispatch({ type: "setRobotoSlab" })}
+              onClick={robotoSlab}
             >
               Aa
             </div>
             <div
               style={{ fontFamily: "Space Mono" }}
               className="font-container font-bold"
-              onClick={() => designDispatch({ type: "setSpaceMono" })}
+              onClick={spaceMono}
             >
               Aa
             </div>
@@ -175,27 +217,15 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
           <div className="fonts-and-colors-container">
             <div
               className="color-container bg-[#f87070]"
-              onClick={() => {
-                designDispatch({
-                  type: "toOrange",
-                });
-              }}
+              onClick={toOrange}
             ></div>
             <div
               className="color-container bg-[#70f3f8]"
-              onClick={() => {
-                designDispatch({
-                  type: "toBlue",
-                });
-              }}
+              onClick={toBlue}
             ></div>
             <div
               className="color-container bg-[#d881f8]"
-              onClick={() => {
-                designDispatch({
-                  type: "toPurple",
-                });
-              }}
+              onClick={toPurple}
             ></div>
           </div>
         </div>
