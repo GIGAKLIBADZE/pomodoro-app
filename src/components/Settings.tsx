@@ -4,7 +4,11 @@ import Down from "/images/icon-arrow-down.svg";
 import { ChangeEvent } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
-const Settings: React.FC = () => {
+interface SettingsProps {
+  setApply: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Settings: React.FC<SettingsProps> = ({ setApply }) => {
   const {
     timerState,
     designState,
@@ -12,7 +16,7 @@ const Settings: React.FC = () => {
     designDispatch,
     setShowSettings,
   } = useGeneral();
-  const { startTime, shortStartTime } = timerState;
+  const { startTime, shortStartTime, longStartTime } = timerState;
   const { font } = designState;
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
@@ -25,6 +29,13 @@ const Settings: React.FC = () => {
   function defineShortTime(event: ChangeEvent<HTMLInputElement>) {
     timerDispatch({
       type: "setShortTime",
+      payload: event.target.value,
+    });
+  }
+
+  function defineLongTime(event: ChangeEvent<HTMLInputElement>) {
+    timerDispatch({
+      type: "setLongTime",
       payload: event.target.value,
     });
   }
@@ -116,6 +127,14 @@ const Settings: React.FC = () => {
               min="10"
               max="25"
               className="input-styles"
+              onChange={(e) => {
+                let value = e.target.value.replace(/\D/g, "");
+                if (value.length > 2) value = value.slice(0, 2);
+                defineLongTime({
+                  target: { value },
+                } as ChangeEvent<HTMLInputElement>);
+              }}
+              value={longStartTime}
             />
             <div className="arrows-container">
               <img src={Up} alt="Up" className="arrow-styles" />
@@ -184,7 +203,10 @@ const Settings: React.FC = () => {
       <div className="flex justify-center relative">
         <button
           className="button-styles absolute top-[-2.65rem]"
-          onClick={() => setShowSettings(false)}
+          onClick={() => {
+            setShowSettings(false);
+            setApply(true);
+          }}
         >
           Apply
         </button>

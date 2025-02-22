@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderAndMenu from "../components/HeaderAndMenu";
 import ShowTimer from "../components/ShowTimer";
 import SettingsImage from "../components/SeettingsImage";
@@ -8,6 +8,7 @@ import { useGeneral } from "../contexts/MainContext";
 const Pomodoro: React.FC = () => {
   const { showSettings, designState } = useGeneral();
   const { font } = designState;
+  const [apply, setApply] = useState<boolean>(false);
 
   return (
     <div
@@ -21,12 +22,12 @@ const Pomodoro: React.FC = () => {
             ? "Space Mono"
             : "",
       }}
-      className="bg-[#1e213f] relative"
+      className="bg-[#1e213f] relative min-h-screen"
     >
       <HeaderAndMenu />
-      <ShowTimer />
+      <ShowTimer apply={apply} />
       <SettingsImage />
-      {showSettings ? <Settings /> : null}
+      {showSettings ? <Settings setApply={setApply} /> : null}
     </div>
   );
 };
