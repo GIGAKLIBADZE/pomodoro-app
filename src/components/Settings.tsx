@@ -26,60 +26,39 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
   const [tempColor, setTempColor] = useState<string>(color);
 
   function defineTime(event: ChangeEvent<HTMLInputElement>) {
-    timerDispatch({
-      type: "setTime",
-      payload: event.target.value,
-    });
+    setTempTime(event.target.value);
   }
 
   function defineShortTime(event: ChangeEvent<HTMLInputElement>) {
-    timerDispatch({
-      type: "setShortTime",
-      payload: event.target.value,
-    });
+    setTempShortTime(event.target.value);
   }
 
   function defineLongTime(event: ChangeEvent<HTMLInputElement>) {
-    timerDispatch({
-      type: "setLongTime",
-      payload: event.target.value,
-    });
+    setTempLongTime(event.target.value);
   }
 
   function kumbhSans() {
-    designDispatch({
-      type: "setKumbhSans",
-    });
+    setTempFont(1);
   }
 
   function robotoSlab() {
-    designDispatch({
-      type: "setRobotoSlab",
-    });
+    setTempFont(2);
   }
 
   function spaceMono() {
-    designDispatch({
-      type: "setSpaceMono",
-    });
+    setTempFont(3);
   }
 
   function toOrange() {
-    designDispatch({
-      type: "toOrange",
-    });
+    setTempColor("orange");
   }
 
   function toBlue() {
-    designDispatch({
-      type: "toBlue",
-    });
+    setTempColor("blue");
   }
 
   function toPurple() {
-    designDispatch({
-      type: "toPurple",
-    });
+    setTempColor("purple");
   }
 
   return (
@@ -128,7 +107,7 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
                   target: { value },
                 } as ChangeEvent<HTMLInputElement>);
               }}
-              value={startTime}
+              value={temptime}
             />
             <div className="arrows-container">
               <img src={Up} alt="Up" className="arrow-styles" />
@@ -152,7 +131,7 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
                   target: { value },
                 } as ChangeEvent<HTMLInputElement>);
               }}
-              value={shortStartTime}
+              value={tempShortTime}
             />
             <div className="arrows-container">
               <img src={Up} alt="Up" className="arrow-styles" />
@@ -176,7 +155,7 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
                   target: { value },
                 } as ChangeEvent<HTMLInputElement>);
               }}
-              value={longStartTime}
+              value={tempLongTime}
             />
             <div className="arrows-container">
               <img src={Up} alt="Up" className="arrow-styles" />
@@ -236,6 +215,29 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
           onClick={() => {
             setShowSettings(false);
             setApply(true);
+            timerDispatch({ type: "setTime", payload: temptime });
+            timerDispatch({ type: "setShortTime", payload: tempShortTime });
+            timerDispatch({ type: "setLongTime", payload: tempLongTime });
+            designDispatch({
+              type:
+                tempFont === 1
+                  ? "setKumbhSans"
+                  : tempFont === 2
+                  ? "setRobotoSlab"
+                  : tempFont === 3
+                  ? "setSpaceMono"
+                  : "",
+            });
+            designDispatch({
+              type:
+                tempColor === "orange"
+                  ? "toOrange"
+                  : tempColor === "blue"
+                  ? "toBlue"
+                  : tempColor === "purple"
+                  ? "toPurple"
+                  : "",
+            });
           }}
         >
           Apply
