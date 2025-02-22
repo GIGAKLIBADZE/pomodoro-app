@@ -108,9 +108,15 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
       timerDispatch({
         type: "pauseShortTime",
       });
+      timerDispatch({
+        type: "pauseLongTime",
+      });
     } else {
       timerDispatch({
         type: "continueShortTime",
+      });
+      timerDispatch({
+        type: "continueLongTime",
       });
     }
   }
@@ -123,10 +129,12 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
     }
 
     if (shortPause === true && shortTimeLeft > 0) {
-      // console.log(shortTimeLeft);
       if (apply === true) {
         timerDispatch({
           type: "pausePomodoro",
+        });
+        timerDispatch({
+          type: "pauseLongTime",
         });
       }
     } else {
@@ -147,6 +155,9 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
       if (apply === true) {
         timerDispatch({
           type: "pausePomodoro",
+        });
+        timerDispatch({
+          type: "pauseShortTime",
         });
       }
     } else {
