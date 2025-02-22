@@ -72,7 +72,7 @@ body {
     }
 
     .fonts-and-colors-container {
-        @apply flex justify-center gap-[1.6rem] mt-[1.8rem]
+        @apply flex justify-center gap-[1.6rem] mt-[1.8rem] sm:gap-[2.6rem]
     }
 
     .button-styles {

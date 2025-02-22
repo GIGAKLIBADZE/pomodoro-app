@@ -73,9 +73,9 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
             ? "Space Mono"
             : "",
       }}
-      className="h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] font-[KumbhSans]"
+      className="w-full h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] font-[KumbhSans]"
     >
-      <div className="w-[32.7rem] rounded-[15px] pt-[2.4rem] pb-[5.9rem] bg-white m-auto">
+      <div className="w-[32.7rem] sm:w-[42.7rem] rounded-[15px] pt-[2.4rem] pb-[5.9rem] bg-white m-auto">
         <div className="px-[2.4rem] flex justify-between items-center">
           <h2 className="text-[2rem] font-bold text-[#161932] leading-normal">
             Settings
