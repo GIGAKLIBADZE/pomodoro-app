@@ -8,7 +8,6 @@ import { useGeneral } from "../contexts/MainContext";
 const Pomodoro: React.FC = () => {
   const { showSettings, designState } = useGeneral();
   const { font } = designState;
-  const [apply, setApply] = useState<boolean>(false);
 
   return (
     <div
@@ -25,9 +24,9 @@ const Pomodoro: React.FC = () => {
       className="bg-[#1e213f] relative min-h-screen"
     >
       <HeaderAndMenu />
-      <ShowTimer apply={apply} />
+      <ShowTimer />
       <SettingsImage />
-      {showSettings ? <Settings setApply={setApply} /> : null}
+      {showSettings ? <Settings /> : null}
     </div>
   );
 };

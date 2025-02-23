@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
-const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
+const ShowTimer: React.FC = () => {
   const { timerState, timerDispatch, designState } = useGeneral();
   const {
     startTime,

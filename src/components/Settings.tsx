@@ -4,11 +4,7 @@ import Down from "/images/icon-arrow-down.svg";
 import { ChangeEvent, useState } from "react";
 import { useGeneral } from "../contexts/MainContext";
 
-interface SettingsProps {
-  setApply: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Settings: React.FC<SettingsProps> = ({ setApply }) => {
+const Settings: React.FC = () => {
   const {
     timerState,
     designState,
@@ -216,7 +212,11 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
             <div
               style={{ fontFamily: "Kumbh Sans" }}
               className={`font-container font-normal ${
-                tempFont === 1 ? "bg-[#161932] text-white" : ""
+                font === 1
+                  ? "bg-[#161932] text-white"
+                  : tempFont === 1
+                  ? "arch"
+                  : ""
               }`}
               onClick={kumbhSans}
             >
@@ -225,7 +225,11 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
             <div
               style={{ fontFamily: "Roboto Slab" }}
               className={`font-container font-normal ${
-                tempFont === 2 ? "bg-[#161932] text-white" : ""
+                font === 2
+                  ? "bg-[#161932] text-white"
+                  : tempFont === 2
+                  ? "arch"
+                  : ""
               }`}
               onClick={robotoSlab}
             >
@@ -234,7 +238,11 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
             <div
               style={{ fontFamily: "Space Mono" }}
               className={`font-container font-bold ${
-                tempFont === 3 ? "bg-[#161932] text-white" : ""
+                font === 3
+                  ? "bg-[#161932] text-white"
+                  : tempFont === 3
+                  ? "arch"
+                  : ""
               }`}
               onClick={spaceMono}
             >
@@ -246,28 +254,43 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
         <div className="md:flex md:pr-[4rem] md:justify-between md:mt-[0.8rem]">
           <h3 className="sub-title mt-[1.6rem] md:mt-[2.8rem]">COLOR</h3>
           <div className="fonts-and-colors-container">
-            <div className="color-container bg-[#f87070]" onClick={toOrange}>
+            <div
+              className={`color-container bg-[#f87070] ${
+                tempColor === "orange" ? "arch" : ""
+              }`}
+              onClick={toOrange}
+            >
               <small
-                className={`check-unicode ${
-                  tempColor === "orange" ? "block" : "hidden"
+                className={`check-unicode  ${
+                  color === "orange" ? "block" : "hidden"
                 }`}
               >
                 &#10004;
               </small>
             </div>
-            <div className="color-container bg-[#70f3f8]" onClick={toBlue}>
+            <div
+              className={`color-container bg-[#70f3f8] ${
+                tempColor === "blue" ? "arch" : ""
+              }`}
+              onClick={toBlue}
+            >
               <small
-                className={`check-unicode ${
-                  tempColor === "blue" ? "block" : "hidden"
+                className={`check-unicode  ${
+                  color === "blue" ? "block" : "hidden"
                 }`}
               >
                 &#10004;
               </small>
             </div>
-            <div className="color-container bg-[#d881f8]" onClick={toPurple}>
+            <div
+              className={`color-container bg-[#d881f8] ${
+                tempColor === "purple" ? "arch" : ""
+              }`}
+              onClick={toPurple}
+            >
               <small
                 className={`check-unicode ${
-                  tempColor === "purple" ? "block" : "hidden"
+                  color === "purple" ? "block" : "hidden"
                 }`}
               >
                 &#10004;
@@ -281,7 +304,6 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
           className="button-styles absolute top-[-2.65rem]"
           onClick={() => {
             setShowSettings(false);
-            setApply(true);
             timerDispatch({ type: "setTime", payload: tempTime.toString() });
             timerDispatch({
               type: "setShortTime",

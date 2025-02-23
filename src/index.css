@@ -20,6 +20,19 @@ body {
     background-color: rgba(10, 12, 28, 0.5)
 }
 
+.arch {
+    position: relative;
+}
+
+.arch::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 0.8rem); 
+    height: calc(100% + 0.8rem);
+    border: 1px solid #eff1fa; 
+    border-radius: 50%; 
+}
+
 @layer components {
     .title {
         @apply text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem] md:pt-[8rem] md:text-[3.2rem]
@@ -101,6 +114,6 @@ body {
     }
 
     .check-unicode {
-        @apply text-3xl
+        @apply text-3xl 
     }
 }
