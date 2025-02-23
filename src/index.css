@@ -33,6 +33,11 @@ body {
     border-radius: 50%; 
 }
 
+.for-added-button:hover .added-button {
+    display: block;
+    cursor: pointer;
+}
+
 @layer components {
     .title {
         @apply text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem] md:pt-[8rem] md:text-[3.2rem]
@@ -58,6 +63,7 @@ body {
 
     .input-styles {
         @apply w-[14rem] h-[4rem] rounded-[1rem] bg-[#eff1fa] text-[1.4rem] font-bold leading-normal text-[#1e213f] pl-[1.6rem]
+        hover:cursor-pointer focus:cursor-text
     }
 
     .label-styles {
@@ -69,7 +75,11 @@ body {
     }
 
     .arrow-styles {
-        @apply w-[1.2rem] h-[0.4rem] 
+        @apply w-[1.2rem] h-[0.4rem];
+    }
+    
+    .arrow-styles:hover {
+        filter: invert(37%) sepia(90%) saturate(400%) hue-rotate(180deg);
     }
 
     .arrows-container {
@@ -83,11 +93,11 @@ body {
 
     .font-container {
         @apply w-[4rem] h-[4rem] rounded-[50%] bg-[#eff1fa] text-[1.5rem] leading-normal text-[#1e213f] 
-        flex justify-center items-center
+        flex justify-center items-center cursor-pointer
     }
 
     .color-container {
-        @apply w-[4rem] h-[4rem] rounded-[50%] flex justify-center items-center
+        @apply w-[4rem] h-[4rem] rounded-[50%] flex justify-center items-center cursor-pointer
     }
 
     .fonts-and-colors-container {
@@ -96,6 +106,7 @@ body {
 
     .button-styles {
         @apply w-[14rem] h-[5.3rem] rounded-[2.7rem] bg-[#f87070] text-[1.6rem] font-bold text-center text-[#fff]
+        absolute top-[-2.65rem] cursor-pointer
     }
 
     .pause {
@@ -115,5 +126,10 @@ body {
 
     .check-unicode {
         @apply text-3xl 
+    }
+
+    .second-apply {
+        @apply w-[14rem] h-[5.3rem] rounded-[2.7rem] bg-white font-bold text-center text-[#fff] opacity-[0.2] 
+        absolute top-[-2.7rem] hidden
     }
 }

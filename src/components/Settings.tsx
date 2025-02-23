@@ -73,7 +73,7 @@ const Settings: React.FC = () => {
             ? "Space Mono"
             : "",
       }}
-      className="w-full h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] md:pt-[26.7rem] md:px-[11.4rem]"
+      className="w-full h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] md:pt-[26.7rem] md:px-[11.4rem] xl:pt-[11.5rem]"
     >
       <div className="settings-container">
         <div className="px-[2.4rem] flex justify-between items-center md:px-[4rem]">
@@ -83,7 +83,7 @@ const Settings: React.FC = () => {
           <img
             src={Cancel}
             alt="Cancel"
-            className="w-[1.3rem] h-[1.3rem] opacity-[0.5] "
+            className="w-[1.3rem] h-[1.3rem] opacity-[0.5] cursor-pointer"
             onClick={() => setShowSettings(false)}
           />
         </div>
@@ -299,44 +299,43 @@ const Settings: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center relative">
-        <button
-          className="button-styles absolute top-[-2.65rem]"
-          onClick={() => {
-            setShowSettings(false);
-            timerDispatch({ type: "setTime", payload: tempTime.toString() });
-            timerDispatch({
-              type: "setShortTime",
-              payload: tempShortTime.toString(),
-            });
-            timerDispatch({
-              type: "setLongTime",
-              payload: tempLongTime.toString(),
-            });
-            designDispatch({
-              type:
-                tempFont === 1
-                  ? "setKumbhSans"
-                  : tempFont === 2
-                  ? "setRobotoSlab"
-                  : tempFont === 3
-                  ? "setSpaceMono"
-                  : "",
-            });
-            designDispatch({
-              type:
-                tempColor === "orange"
-                  ? "toOrange"
-                  : tempColor === "blue"
-                  ? "toBlue"
-                  : tempColor === "purple"
-                  ? "toPurple"
-                  : "",
-            });
-          }}
-        >
-          Apply
-        </button>
+      <div
+        className="flex justify-center relative for-added-button"
+        onClick={() => {
+          setShowSettings(false);
+          timerDispatch({ type: "setTime", payload: tempTime.toString() });
+          timerDispatch({
+            type: "setShortTime",
+            payload: tempShortTime.toString(),
+          });
+          timerDispatch({
+            type: "setLongTime",
+            payload: tempLongTime.toString(),
+          });
+          designDispatch({
+            type:
+              tempFont === 1
+                ? "setKumbhSans"
+                : tempFont === 2
+                ? "setRobotoSlab"
+                : tempFont === 3
+                ? "setSpaceMono"
+                : "",
+          });
+          designDispatch({
+            type:
+              tempColor === "orange"
+                ? "toOrange"
+                : tempColor === "blue"
+                ? "toBlue"
+                : tempColor === "purple"
+                ? "toPurple"
+                : "",
+          });
+        }}
+      >
+        <button className="button-styles">Apply</button>
+        <div className="second-apply added-button">Apply</div>
       </div>
     </div>
   );
