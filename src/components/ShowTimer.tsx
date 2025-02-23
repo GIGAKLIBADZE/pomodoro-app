@@ -184,7 +184,7 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
   // }
 
   return (
-    <div className="w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative md:w-[41rem] md:h-[41rem] md:mt-[10.9rem]">
+    <div className="countdown-container">
       <div
         style={{
           color: "white",
