@@ -23,6 +23,7 @@ body {
 @layer components {
     .title {
         @apply text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem] md:pt-[8rem] md:text-[3.2rem]
+        xl:pt-[4.8rem]
     }
 
     .menu-button {
@@ -35,7 +36,7 @@ body {
     
     .menu {
         @apply w-[32.7rem] h-[6.3rem] pt-[0.8rem] pb-[0.7rem] rounded-[31.5px] bg-[#161932] m-auto 
-        mt-[4.5rem] flex justify-center md:w-[37.3rem] md-[5.5rem]
+        mt-[4.5rem] flex justify-center md:w-[37.3rem] md:mt-[5.5rem]
     }
 
     .line {
