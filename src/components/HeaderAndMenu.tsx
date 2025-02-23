@@ -7,7 +7,7 @@ const HeaderAndMenu: React.FC = () => {
 
   return (
     <div className={`text-white `}>
-      <h1 className="text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem]">
+      <h1 className="text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem] md:pt-[8rem] md:text-[3.2rem]">
         pomodoro
       </h1>
       <div className="menu">

@@ -100,18 +100,23 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
   };
 
   function togglePause() {
-    timerDispatch({
-      type: "togglePause",
-    });
+    if (timeLeft > 0) {
+      timerDispatch({
+        type: "togglePause",
+      });
+    }
 
-    if (pause === true) {
+    if (pause === true && timeLeft > 0) {
+      // if (shortTimeLeft > 0) {
       timerDispatch({
         type: "pauseShortTime",
       });
+      // } else if (shortTimeLeft <= 0 && longTimeLeft > 0) {
       timerDispatch({
         type: "pauseLongTime",
       });
-    } else {
+      // }
+    } else if (pause === false && timeLeft > 0) {
       timerDispatch({
         type: "continueShortTime",
       });
@@ -122,21 +127,21 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
   }
 
   function toggleShortPause() {
-    if (apply === true) {
+    if (shortTimeLeft > 0) {
       timerDispatch({
         type: "toggleShortPause",
       });
     }
 
     if (shortPause === true && shortTimeLeft > 0) {
-      if (apply === true) {
-        timerDispatch({
-          type: "pausePomodoro",
-        });
-        timerDispatch({
-          type: "pauseLongTime",
-        });
-      }
+      // if (apply === true) {
+      timerDispatch({
+        type: "pausePomodoro",
+      });
+      timerDispatch({
+        type: "pauseLongTime",
+      });
+      // }
     } else {
       timerDispatch({
         type: "continuePomodoro",
@@ -145,22 +150,22 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
   }
 
   function toggleLongPause() {
-    if (apply === true) {
+    if (longTimeLeft > 0) {
       timerDispatch({
         type: "toggleLongPause",
       });
     }
 
     if (longPause === true && longTimeLeft > 0) {
-      if (apply === true) {
-        timerDispatch({
-          type: "pausePomodoro",
-        });
-        timerDispatch({
-          type: "pauseShortTime",
-        });
-      }
-    } else {
+      // if (apply === true) {
+      timerDispatch({
+        type: "pausePomodoro",
+      });
+      timerDispatch({
+        type: "pauseShortTime",
+      });
+      // }
+    } else if (longPause === false && longTimeLeft > 0) {
       timerDispatch({
         type: "continuePomodoro",
       });
@@ -173,6 +178,11 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
     });
   }
 
+  // if (timeLeft === 0) {
+  //   setShortTimeLeft(0);
+  //   setLongTimeLeft(0);
+  // }
+
   return (
     <div
       className={`w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative`}
@@ -184,11 +194,11 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
           borderRadius: "50%",
         }}
         onClick={
-          mode === "pomodoro" && apply === true
+          mode === "pomodoro"
             ? togglePause
-            : mode === "short" && apply === true
+            : mode === "short"
             ? toggleShortPause
-            : mode === "long" && apply === true
+            : mode === "long"
             ? toggleLongPause
             : undefined
         }
