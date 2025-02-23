@@ -19,9 +19,13 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
   const { startTime, shortStartTime, longStartTime } = timerState;
   const { font, color } = designState;
 
-  const [temptime, setTempTime] = useState<string>(startTime);
-  const [tempShortTime, setTempShortTime] = useState<string>(shortStartTime);
-  const [tempLongTime, setTempLongTime] = useState<string>(longStartTime);
+  const [tempTime, setTempTime] = useState<string | number>(startTime);
+  const [tempShortTime, setTempShortTime] = useState<string | number>(
+    shortStartTime
+  );
+  const [tempLongTime, setTempLongTime] = useState<string | number>(
+    longStartTime
+  );
   const [tempFont, setTempFont] = useState<number>(font);
   const [tempColor, setTempColor] = useState<string>(color);
 
@@ -107,11 +111,25 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
                   target: { value },
                 } as ChangeEvent<HTMLInputElement>);
               }}
-              value={temptime}
+              value={tempTime}
             />
             <div className="arrows-container">
-              <img src={Up} alt="Up" className="arrow-styles" />
-              <img src={Down} alt="Down" className="arrow-styles" />
+              <img
+                src={Up}
+                alt="Up"
+                className="arrow-styles"
+                onClick={() => setTempTime(Number(tempTime) + 1)}
+              />
+              <img
+                src={Down}
+                alt="Down"
+                className="arrow-styles"
+                onClick={() =>
+                  Number(tempTime) > 0
+                    ? setTempTime(Number(tempTime) - 1)
+                    : null
+                }
+              />
             </div>
           </div>
           <div className="parent-of-input">
@@ -134,8 +152,22 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
               value={tempShortTime}
             />
             <div className="arrows-container">
-              <img src={Up} alt="Up" className="arrow-styles" />
-              <img src={Down} alt="Down" className="arrow-styles" />
+              <img
+                src={Up}
+                alt="Up"
+                className="arrow-styles"
+                onClick={() => setTempShortTime(Number(tempShortTime) + 1)}
+              />
+              <img
+                src={Down}
+                alt="Down"
+                className="arrow-styles"
+                onClick={() =>
+                  Number(tempShortTime) > 0
+                    ? setTempShortTime(Number(tempShortTime) - 1)
+                    : null
+                }
+              />
             </div>
           </div>
           <div className="parent-of-input">
@@ -158,8 +190,22 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
               value={tempLongTime}
             />
             <div className="arrows-container">
-              <img src={Up} alt="Up" className="arrow-styles" />
-              <img src={Down} alt="Down" className="arrow-styles" />
+              <img
+                src={Up}
+                alt="Up"
+                className="arrow-styles"
+                onClick={() => setTempLongTime(Number(tempLongTime) + 1)}
+              />
+              <img
+                src={Down}
+                alt="Down"
+                className="arrow-styles"
+                onClick={() =>
+                  Number(tempLongTime) > 0
+                    ? setTempLongTime(Number(tempLongTime) - 1)
+                    : null
+                }
+              />
             </div>
           </div>
         </div>
@@ -236,9 +282,15 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
           onClick={() => {
             setShowSettings(false);
             setApply(true);
-            timerDispatch({ type: "setTime", payload: temptime });
-            timerDispatch({ type: "setShortTime", payload: tempShortTime });
-            timerDispatch({ type: "setLongTime", payload: tempLongTime });
+            timerDispatch({ type: "setTime", payload: tempTime.toString() });
+            timerDispatch({
+              type: "setShortTime",
+              payload: tempShortTime.toString(),
+            });
+            timerDispatch({
+              type: "setLongTime",
+              payload: tempLongTime.toString(),
+            });
             designDispatch({
               type:
                 tempFont === 1

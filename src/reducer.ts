@@ -32,11 +32,11 @@ export function designReducer(designState: tDesignState, action: { type: string;
 }
 
 export const timerInitialState = {
-    startTime: "",
+    startTime: "0",
     pause: true,
-    shortStartTime: "",
+    shortStartTime: "0",
     shortPause: true,
-    longStartTime: "",
+    longStartTime: "0",
     longPause: true,
 }
 
