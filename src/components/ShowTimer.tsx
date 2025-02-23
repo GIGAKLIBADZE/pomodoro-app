@@ -11,7 +11,7 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
     longStartTime,
     longPause,
   } = timerState;
-  const { color, mode } = designState;
+  const { color, mode, font } = designState;
 
   const [timeLeft, setTimeLeft] = useState<number>(Number(startTime) * 60);
   const [shortTimeLeft, setShortTimeLeft] = useState<number>(
@@ -184,9 +184,7 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
   // }
 
   return (
-    <div
-      className={`w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative`}
-    >
+    <div className="w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative md:w-[41rem] md:h-[41rem] md:mt-[10.9rem]">
       <div
         style={{
           color: "white",
@@ -211,6 +209,7 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
             </linearGradient>
           </defs>
           <circle
+            className="first-circle"
             cx="134.5"
             cy="134.5"
             r="124.5"
@@ -219,14 +218,10 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
             // stroke="#272c5a"
             stroke="url(#gradient)"
             strokeDasharray={782.68}
-            // strokeDashoffset={
-            //   781.68 * (1 - timeLeft / (Number(startTime) * 60))
-            // }
             transform="rotate(-90, 134.5, 134.5)"
-            filter="url(#
-            shadow)"
           ></circle>
           <circle
+            className="second-circle"
             onClick={changeOffset}
             cx="134.5"
             cy="134.5"
@@ -254,8 +249,18 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>
         </svg>
-        <div className="top-[8.6rem] absolute left-[50%] transform -translate-x-1/2 flex flex-col items-center">
-          <h4 className="h-[8rem] text-[8rem] fon-bold leading-normal tracking-[-4px] text-[#d7e0ff]">
+        <div className="top-[8.6rem] absolute left-[50%] transform -translate-x-1/2 flex flex-col items-center md:top-[12rem]">
+          <h4
+            className={`h-[8rem] text-[8rem] fon-bold leading-normal text-[#d7e0ff] md:text-[10rem] ${
+              font === 1
+                ? "tracking-[-4px] md:tracking-[-5px]"
+                : font === 2
+                ? "tracking-normal"
+                : font === 3
+                ? "tracking-[-15px] md:tracking-[-10px]"
+                : ""
+            }`}
+          >
             {mode === "pomodoro"
               ? toDate(timeLeft)
               : mode === "short"
@@ -264,9 +269,7 @@ const ShowTimer: React.FC<{ apply: boolean }> = ({ apply }) => {
               ? longToDate(longTimeLeft)
               : ""}
           </h4>
-          <span className="w-[9.5rem] text-[1.4rem] font-bold leading-normal tracking-[13.13px] text-[#d7e0ff] mt-[3.5rem]">
-            PAUSE
-          </span>
+          <span className="pause">PAUSE</span>
         </div>
       </div>
     </div>

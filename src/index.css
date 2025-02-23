@@ -21,6 +21,10 @@ body {
 }
 
 @layer components {
+    .title {
+        @apply text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem] md:pt-[8rem] md:text-[3.2rem]
+    }
+
     .menu-button {
         @apply w-[10.5rem] h-[4.8rem] rounded-[26.5px] md:w-[12rem] 
     }
@@ -77,5 +81,10 @@ body {
 
     .button-styles {
         @apply w-[14rem] h-[5.3rem] rounded-[2.7rem] bg-[#f87070] text-[1.6rem] font-bold text-center text-[#fff]
+    }
+
+    .pause {
+        @apply w-[9.5rem] text-[1.4rem] font-bold leading-normal tracking-[13.13px] text-[#d7e0ff] mt-[3.5rem] 
+        md:text-[1.6rem] md:leading-[15px] md:mt-[5.5rem]
     }
 }
