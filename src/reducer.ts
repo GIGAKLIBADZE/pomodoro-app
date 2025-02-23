@@ -40,7 +40,7 @@ export const timerInitialState = {
     longPause: true,
 }
 
-export function timerReducer(timerState: tTimerState, action: { type: string; payload?: string }): tTimerState {
+export function timerReducer(timerState: tTimerState, action: { type: string; payload?: string  }): tTimerState {
     switch (action.type) {
     case "setTime":
         return {...timerState, startTime: action.payload ?? "1" };
@@ -68,6 +68,8 @@ export function timerReducer(timerState: tTimerState, action: { type: string; pa
         return {...timerState, longPause: true}
     // case "changeOffset":
     //     return {...timerState, startTime: action.payload ?? "1"}
+    case "startAgain": 
+        return {...timerState, startTime: action.payload ?? "1"}
     default:
         return timerState;
     }

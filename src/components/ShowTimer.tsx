@@ -170,6 +170,17 @@ const ShowTimer: React.FC = () => {
     }
   }
 
+  function startAgain() {
+    // timerDispatch({
+    //   type: "startAgain",
+    //   payload: (Number(startTime) * 60).toString(),
+    // });
+
+    if (timeLeft === 0) {
+      setTimeLeft(Number(startTime) * 60);
+    }
+  }
+
   // function changeOffset() {
   //   timerDispatch({
   //     type: "changeOffset",
@@ -185,8 +196,10 @@ const ShowTimer: React.FC = () => {
           borderRadius: "50%",
         }}
         onClick={
-          mode === "pomodoro"
+          mode === "pomodoro" && timeLeft > 0
             ? togglePause
+            : mode === "pomodoro" && timeLeft === 0
+            ? startAgain
             : mode === "short"
             ? toggleShortPause
             : mode === "long"
