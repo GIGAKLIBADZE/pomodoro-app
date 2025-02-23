@@ -200,18 +200,33 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
         <div className="md:flex md:pr-[4rem] md:justify-between md:mt-[0.8rem]">
           <h3 className="sub-title mt-[1.6rem] md:mt-[2.8rem]">COLOR</h3>
           <div className="fonts-and-colors-container">
-            <div
-              className="color-container bg-[#f87070]"
-              onClick={toOrange}
-            ></div>
-            <div
-              className="color-container bg-[#70f3f8]"
-              onClick={toBlue}
-            ></div>
-            <div
-              className="color-container bg-[#d881f8]"
-              onClick={toPurple}
-            ></div>
+            <div className="color-container bg-[#f87070]" onClick={toOrange}>
+              <small
+                className={`check-unicode ${
+                  tempColor === "orange" ? "block" : "hidden"
+                }`}
+              >
+                &#10004;
+              </small>
+            </div>
+            <div className="color-container bg-[#70f3f8]" onClick={toBlue}>
+              <small
+                className={`check-unicode ${
+                  tempColor === "blue" ? "block" : "hidden"
+                }`}
+              >
+                &#10004;
+              </small>
+            </div>
+            <div className="color-container bg-[#d881f8]" onClick={toPurple}>
+              <small
+                className={`check-unicode ${
+                  tempColor === "purple" ? "block" : "hidden"
+                }`}
+              >
+                &#10004;
+              </small>
+            </div>
           </div>
         </div>
       </div>

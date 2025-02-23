@@ -74,7 +74,7 @@ body {
     }
 
     .color-container {
-        @apply w-[4rem] h-[4rem] rounded-[50%] 
+        @apply w-[4rem] h-[4rem] rounded-[50%] flex justify-center items-center
     }
 
     .fonts-and-colors-container {
@@ -98,5 +98,9 @@ body {
     .settings-container {
         @apply w-[32.7rem] sm:w-[42.7rem] rounded-[15px] pt-[2.4rem] pb-[5.9rem] bg-white m-auto md:w-[54rem] 
         md:rounded-[25px] md:pt-[3.4rem] md:pb-[7.4rem]
+    }
+
+    .check-unicode {
+        @apply text-3xl
     }
 }
