@@ -107,19 +107,17 @@ const ShowTimer: React.FC = () => {
     }
 
     if (pause === true && timeLeft > 0) {
-      // if (shortTimeLeft > 0) {
       timerDispatch({
         type: "pauseShortTime",
       });
-      // } else if (shortTimeLeft <= 0 && longTimeLeft > 0) {
       timerDispatch({
         type: "pauseLongTime",
       });
-      // }
-    } else if (pause === false && timeLeft > 0) {
+    } else if (pause === false && timeLeft > 0 && shortTimeLeft > 0) {
       timerDispatch({
         type: "continueShortTime",
       });
+    } else if (pause === false && timeLeft > 0 && longTimeLeft > 0) {
       timerDispatch({
         type: "continueLongTime",
       });
@@ -133,16 +131,18 @@ const ShowTimer: React.FC = () => {
       });
     }
 
-    if (shortPause === true && shortTimeLeft > 0) {
-      // if (apply === true) {
+    if (
+      shortPause === true &&
+      shortTimeLeft > 0 &&
+      Number(shortStartTime) > 0
+    ) {
       timerDispatch({
         type: "pausePomodoro",
       });
       timerDispatch({
         type: "pauseLongTime",
       });
-      // }
-    } else {
+    } else if (shortPause === false && Number(shortStartTime) > 0) {
       timerDispatch({
         type: "continuePomodoro",
       });
@@ -156,31 +156,24 @@ const ShowTimer: React.FC = () => {
       });
     }
 
-    if (longPause === true && longTimeLeft > 0) {
-      // if (apply === true) {
+    if (longPause === true && longTimeLeft > 0 && Number(longStartTime) > 0) {
       timerDispatch({
         type: "pausePomodoro",
       });
       timerDispatch({
         type: "pauseShortTime",
       });
-      // }
-    } else if (longPause === false && longTimeLeft > 0) {
+    } else if (longPause === false && Number(longStartTime) > 0) {
       timerDispatch({
         type: "continuePomodoro",
       });
     }
   }
 
-  function changeOffset() {
-    timerDispatch({
-      type: "changeOffset",
-    });
-  }
-
-  // if (timeLeft === 0) {
-  //   setShortTimeLeft(0);
-  //   setLongTimeLeft(0);
+  // function changeOffset() {
+  //   timerDispatch({
+  //     type: "changeOffset",
+  //   });
   // }
 
   return (
@@ -222,7 +215,7 @@ const ShowTimer: React.FC = () => {
           ></circle>
           <circle
             className="second-circle"
-            onClick={changeOffset}
+            // onClick={changeOffset}
             cx="134.5"
             cy="134.5"
             r="100"
@@ -269,7 +262,27 @@ const ShowTimer: React.FC = () => {
               ? longToDate(longTimeLeft)
               : ""}
           </h4>
-          <span className="pause">PAUSE</span>
+          <span className="pause">
+            {(timeLeft < Number(startTime) * 60 &&
+              timeLeft > 0 &&
+              mode === "pomodoro") ||
+            (shortTimeLeft < Number(shortStartTime) * 60 &&
+              shortTimeLeft > 0 &&
+              mode === "short") ||
+            (longTimeLeft < Number(longStartTime) * 60 &&
+              longTimeLeft > 0 &&
+              mode === "long")
+              ? "PAUSE"
+              : (timeLeft === Number(startTime) * 60 && mode === "pomodoro") ||
+                (shortTimeLeft === Number(shortStartTime) * 60 &&
+                  mode === "short") ||
+                (shortTimeLeft === Number(shortStartTime) * 60 &&
+                  mode === "long")
+              ? "START"
+              : timeLeft === 0 && mode === "pomodoro"
+              ? "RESTART"
+              : ""}
+          </span>
         </div>
       </div>
     </div>

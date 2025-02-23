@@ -66,8 +66,8 @@ export function timerReducer(timerState: tTimerState, action: { type: string; pa
         return {...timerState, longPause: true}
     case "continueLongTime":
         return {...timerState, longPause: true}
-    case "changeOffset":
-        return {...timerState, startTime: action.payload ?? "1"}
+    // case "changeOffset":
+    //     return {...timerState, startTime: action.payload ?? "1"}
     default:
         return timerState;
     }

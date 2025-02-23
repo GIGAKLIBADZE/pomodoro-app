@@ -29,7 +29,7 @@ body {
     position: absolute;
     width: calc(100% + 0.8rem); 
     height: calc(100% + 0.8rem);
-    border: 1px solid #eff1fa; 
+    border: 2px solid #eff1fa; 
     border-radius: 50%; 
 }
 
