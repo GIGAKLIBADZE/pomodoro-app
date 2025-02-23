@@ -40,7 +40,7 @@ body {
     }
 
     .line {
-        @apply w-full h-[0.1rem] mt-[2.8rem] bg-[#e3e1e1]
+        @apply w-full h-[0.1rem] mt-[2.8rem] bg-[#e3e1e1] md:mt-[3.1rem]
     }
 
     .input-styles {
@@ -52,7 +52,7 @@ body {
     }
 
     .parent-of-input {
-        @apply flex justify-between items-center relative
+        @apply flex justify-between items-center relative md:flex-col md:items-start md:gap-[1rem]
     }
 
     .arrow-styles {
@@ -60,11 +60,12 @@ body {
     }
 
     .arrows-container {
-        @apply flex flex-col gap-[0.9rem] absolute top-[1.2rem] right-[1.6rem]
+        @apply flex flex-col gap-[0.9rem] absolute top-[1.2rem] right-[1.6rem] md:top-[4rem]
     }
 
     .sub-title {
         @apply text-[1.1rem] font-bold tracking-[4.23px] text-center text-[#161932] mt-[2.4rem]
+        md:text-[1.3rem] md:tracking-[5px] md:text-left md:pl-[4rem]
     }
 
     .font-container {
@@ -92,5 +93,10 @@ body {
     .countdown-container {
         @apply w-[30rem] h-[30rem] rounded-[50%] bg-[#161932] m-auto mt-[4.8rem] relative md:w-[41rem] md:h-[41rem] 
         md:mt-[10.9rem] xl:mt-[5.5rem]
+    }
+
+    .settings-container {
+        @apply w-[32.7rem] sm:w-[42.7rem] rounded-[15px] pt-[2.4rem] pb-[5.9rem] bg-white m-auto md:w-[54rem] 
+        md:rounded-[25px] md:pt-[3.4rem] md:pb-[7.4rem]
     }
 }

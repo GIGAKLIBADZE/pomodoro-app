@@ -8,7 +8,7 @@ const SettingsImage: React.FC = () => {
     <img
       src={SettingsIcon}
       alt="Settings"
-      className="mt-[7.9rem] m-auto pb-[4.8rem] md:mt-[14.4rem] md:pb-[10.3rem]"
+      className="mt-[7.9rem] m-auto pb-[4.8rem] md:mt-[14.4rem] md:pb-[10.3rem] xl:mt-[6.3rem] xl:pb-[5.6rem]"
       onClick={() => setShowSettings(true)}
     />
   );

@@ -73,23 +73,23 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
             ? "Space Mono"
             : "",
       }}
-      className="w-full h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] font-[KumbhSans]"
+      className="w-full h-full absolute top-0 left-0 for-opacity pt-[4.6rem] px-[2.4rem] md:pt-[26.7rem] md:px-[11.4rem]"
     >
-      <div className="w-[32.7rem] sm:w-[42.7rem] rounded-[15px] pt-[2.4rem] pb-[5.9rem] bg-white m-auto">
-        <div className="px-[2.4rem] flex justify-between items-center">
-          <h2 className="text-[2rem] font-bold text-[#161932] leading-normal">
+      <div className="settings-container">
+        <div className="px-[2.4rem] flex justify-between items-center md:px-[4rem]">
+          <h2 className="text-[2rem] font-bold text-[#161932] leading-normal md:text-[2.8rem]">
             Settings
           </h2>
           <img
             src={Cancel}
             alt="Cancel"
-            className="w-[1.3rem] h-[1.3rem] opacity-[0.5]"
+            className="w-[1.3rem] h-[1.3rem] opacity-[0.5] "
             onClick={() => setShowSettings(false)}
           />
         </div>
         <div className="line"></div>
         <h3 className="sub-title">TIME (MINUTES)</h3>
-        <div className="px-[2.4rem] mt-[1.8rem] flex flex-col gap-[0.8rem]">
+        <div className="px-[2.4rem] mt-[1.8rem] flex flex-col gap-[0.8rem] md:px-[4rem] md:mt-[2.6rem] md:flex-row md:gap-[2rem]">
           <div className="parent-of-input">
             <label htmlFor="pomodoro" className="label-styles">
               pomodoro
@@ -164,8 +164,8 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
           </div>
         </div>
         <div className="line"></div>
-        <div>
-          <h3 className="sub-title">FONT</h3>
+        <div className="md:flex md:items-baseline md:pr-[4rem] md:justify-between md:mt-[0.8rem]">
+          <h3 className="sub-title md:mt-0">FONT</h3>
           <div className="fonts-and-colors-container">
             <div
               style={{ fontFamily: "Kumbh Sans" }}
@@ -191,8 +191,8 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
           </div>
         </div>
         <div className="line"></div>
-        <div>
-          <h3 className="sub-title mt-[1.6rem]">COLOR</h3>
+        <div className="md:flex md:pr-[4rem] md:justify-between md:mt-[0.8rem]">
+          <h3 className="sub-title mt-[1.6rem] md:mt-[2.8rem]">COLOR</h3>
           <div className="fonts-and-colors-container">
             <div
               className="color-container bg-[#f87070]"
