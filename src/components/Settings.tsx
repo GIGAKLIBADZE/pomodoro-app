@@ -169,21 +169,27 @@ const Settings: React.FC<SettingsProps> = ({ setApply }) => {
           <div className="fonts-and-colors-container">
             <div
               style={{ fontFamily: "Kumbh Sans" }}
-              className="font-container font-normal"
+              className={`font-container font-normal ${
+                tempFont === 1 ? "bg-[#161932] text-white" : ""
+              }`}
               onClick={kumbhSans}
             >
               Aa
             </div>
             <div
               style={{ fontFamily: "Roboto Slab" }}
-              className="font-container font-normal"
+              className={`font-container font-normal ${
+                tempFont === 2 ? "bg-[#161932] text-white" : ""
+              }`}
               onClick={robotoSlab}
             >
               Aa
             </div>
             <div
               style={{ fontFamily: "Space Mono" }}
-              className="font-container font-bold"
+              className={`font-container font-bold ${
+                tempFont === 3 ? "bg-[#161932] text-white" : ""
+              }`}
               onClick={spaceMono}
             >
               Aa
