@@ -171,21 +171,10 @@ const ShowTimer: React.FC = () => {
   }
 
   function startAgain() {
-    // timerDispatch({
-    //   type: "startAgain",
-    //   payload: (Number(startTime) * 60).toString(),
-    // });
-
     if (timeLeft === 0) {
       setTimeLeft(Number(startTime) * 60);
     }
   }
-
-  // function changeOffset() {
-  //   timerDispatch({
-  //     type: "changeOffset",
-  //   });
-  // }
 
   return (
     <div className="countdown-container">
@@ -289,8 +278,7 @@ const ShowTimer: React.FC = () => {
               : (timeLeft === Number(startTime) * 60 && mode === "pomodoro") ||
                 (shortTimeLeft === Number(shortStartTime) * 60 &&
                   mode === "short") ||
-                (shortTimeLeft === Number(shortStartTime) * 60 &&
-                  mode === "long")
+                (longTimeLeft === Number(longStartTime) * 60 && mode === "long")
               ? "START"
               : timeLeft === 0 && mode === "pomodoro"
               ? "RESTART"
