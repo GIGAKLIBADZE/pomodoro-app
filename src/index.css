@@ -38,6 +38,18 @@ body {
     cursor: pointer;
 }
 
+.hoveredOrange:hover span {
+    color: #f87070;
+}
+
+.hoveredBlue:hover span {
+    color: #70f3f8;
+}
+
+.hoveredPurple:hover span {
+    color: #d881f8;
+}
+
 @layer components {
     .title {
         @apply text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem] md:pt-[8rem] md:text-[3.2rem]

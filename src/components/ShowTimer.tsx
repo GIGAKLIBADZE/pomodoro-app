@@ -184,6 +184,15 @@ const ShowTimer: React.FC = () => {
           boxShadow: "50px 50px 100px 0 #121530, -50px -50px 100px 0 #272c5a",
           borderRadius: "50%",
         }}
+        className={`${
+          color === "orange"
+            ? "hoveredOrange"
+            : color === "blue"
+            ? "hoveredBlue"
+            : color === "purple"
+            ? "hoveredPurple"
+            : ""
+        }`}
         onClick={
           mode === "pomodoro" && timeLeft > 0
             ? togglePause
