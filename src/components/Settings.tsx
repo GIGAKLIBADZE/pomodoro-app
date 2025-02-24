@@ -97,8 +97,6 @@ const Settings: React.FC = () => {
             <input
               id="pomodoro"
               name="pomodoro"
-              min="1"
-              max="60"
               className="input-styles"
               onChange={(e) => {
                 let value = e.target.value.replace(/\D/g, "");
@@ -135,12 +133,11 @@ const Settings: React.FC = () => {
             <input
               id="short"
               name="short"
-              min="1"
-              max="5"
               className="input-styles"
               onChange={(e) => {
                 let value = e.target.value.replace(/\D/g, "");
                 if (value.length > 2) value = value.slice(0, 2);
+                if (Number(value) > 15) value = "15";
                 defineShortTime({
                   target: { value },
                 } as ChangeEvent<HTMLInputElement>);
@@ -152,7 +149,11 @@ const Settings: React.FC = () => {
                 src={Up}
                 alt="Up"
                 className="arrow-styles"
-                onClick={() => setTempShortTime(Number(tempShortTime) + 1)}
+                onClick={() =>
+                  Number(tempShortTime) < 15
+                    ? setTempShortTime(Number(tempShortTime) + 1)
+                    : null
+                }
               />
               <img
                 src={Down}
@@ -173,12 +174,11 @@ const Settings: React.FC = () => {
             <input
               id="long"
               name="long"
-              min="10"
-              max="25"
               className="input-styles"
               onChange={(e) => {
                 let value = e.target.value.replace(/\D/g, "");
                 if (value.length > 2) value = value.slice(0, 2);
+                if (Number(value) > 30) value = "30";
                 defineLongTime({
                   target: { value },
                 } as ChangeEvent<HTMLInputElement>);
@@ -190,7 +190,11 @@ const Settings: React.FC = () => {
                 src={Up}
                 alt="Up"
                 className="arrow-styles"
-                onClick={() => setTempLongTime(Number(tempLongTime) + 1)}
+                onClick={() =>
+                  Number(tempLongTime) < 30
+                    ? setTempLongTime(Number(tempLongTime) + 1)
+                    : null
+                }
               />
               <img
                 src={Down}
