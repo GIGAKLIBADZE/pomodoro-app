@@ -144,4 +144,9 @@ body {
         @apply w-[14rem] h-[5.3rem] rounded-[2.7rem] bg-white font-bold text-center text-[#fff] opacity-[0.2] 
         absolute top-[-2.7rem] hidden
     }
+
+    .settings-img {
+        @apply mt-[7.9rem] m-auto pb-[4.8rem] md:mt-[14.4rem] md:pb-[10.3rem] xl:mt-[6.3rem] xl:pb-[5.6rem] 
+        hover:filter hover:brightness-1 hover:invert cursor-pointer
+    }
 }
