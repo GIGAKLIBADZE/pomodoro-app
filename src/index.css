@@ -50,6 +50,23 @@ body {
     color: #d881f8;
 }
 
+.first-circle {
+    cx: 134.5;
+    cy: 134.5;
+    r: 124.5;
+    fill: none;
+    stroke-dasharray: 782.68;
+}
+
+.second-circle {
+    cx: 134.5;
+    cy: 134.5;
+    r: 100;
+    fill: none;
+    stroke-dasharray: 628.32;
+    stroke-linecap: round;
+}
+
 @layer components {
     .title {
         @apply text-[2.4rem] font-bold leading-normal text-center text-[#d7e0ff] pt-[3.2rem] md:pt-[8rem] md:text-[3.2rem]

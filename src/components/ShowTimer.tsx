@@ -23,15 +23,9 @@ const ShowTimer: React.FC = () => {
 
   useEffect(() => {
     setTimeLeft(Number(startTime) * 60);
-  }, [startTime]);
-
-  useEffect(() => {
     setShortTimeLeft(Number(shortStartTime) * 60);
-  }, [shortStartTime]);
-
-  useEffect(() => {
     setLongTimeLeft(Number(longStartTime) * 60);
-  }, [longStartTime]);
+  }, [startTime, shortStartTime, longStartTime]);
 
   useEffect(() => {
     if (pause || timeLeft <= 0) return;
@@ -48,7 +42,6 @@ const ShowTimer: React.FC = () => {
 
     const interval = setInterval(() => {
       setShortTimeLeft((prev) => {
-        // console.log(shortPause);
         if (prev === 0) {
           timerDispatch({
             type: "continuePomodoro",
@@ -84,19 +77,18 @@ const ShowTimer: React.FC = () => {
   const toDate = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-  };
+    const shortMins = Math.floor(seconds / 60);
+    const shortSecs = seconds % 60;
+    const longMins = Math.floor(seconds / 60);
+    const longSecs = seconds % 60;
 
-  const shortToDate = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-  };
-
-  const longToDate = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    if (mode === "pomodoro") {
+      return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    } else if (mode === "short") {
+      return `${shortMins}:${shortSecs < 10 ? "0" : ""}${shortSecs}`;
+    } else if (mode === "long") {
+      return `${longMins}:${longSecs < 10 ? "0" : ""}${longSecs}`;
+    }
   };
 
   function togglePause() {
@@ -184,7 +176,7 @@ const ShowTimer: React.FC = () => {
           boxShadow: "50px 50px 100px 0 #121530, -50px -50px 100px 0 #272c5a",
           borderRadius: "50%",
         }}
-        className={`${
+        className={`cursor-pointer ${
           color === "orange"
             ? "hoveredOrange"
             : color === "blue"
@@ -205,7 +197,12 @@ const ShowTimer: React.FC = () => {
             : undefined
         }
       >
-        <svg width="100%" height="100%" viewBox="0 0 269 269">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 269 269"
+          className="rounded-[50%]"
+        >
           <defs>
             <linearGradient id="gradient" gradientTransform={`rotate(315)`}>
               <stop offset="0%" stopColor="#2e325a" />
@@ -214,24 +211,13 @@ const ShowTimer: React.FC = () => {
           </defs>
           <circle
             className="first-circle"
-            cx="134.5"
-            cy="134.5"
-            r="124.5"
             strokeWidth="20"
-            fill="none"
-            // stroke="#272c5a"
             stroke="url(#gradient)"
-            strokeDasharray={782.68}
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>
           <circle
             className="second-circle"
-            // onClick={changeOffset}
-            cx="134.5"
-            cy="134.5"
-            r="100"
             strokeWidth="10"
-            fill="none"
             stroke={
               color === "orange"
                 ? "#f87070"
@@ -239,7 +225,6 @@ const ShowTimer: React.FC = () => {
                 ? "#70f3f8"
                 : "#d881f8"
             }
-            strokeDasharray={628.32}
             strokeDashoffset={
               mode === "pomodoro"
                 ? 628.32 * (1 - timeLeft / (Number(startTime) * 60))
@@ -249,7 +234,6 @@ const ShowTimer: React.FC = () => {
                 ? 628.32 * (1 - longTimeLeft / (Number(longStartTime) * 60))
                 : ""
             }
-            strokeLinecap="round"
             transform="rotate(-90, 134.5, 134.5)"
           ></circle>
         </svg>
@@ -268,9 +252,9 @@ const ShowTimer: React.FC = () => {
             {mode === "pomodoro"
               ? toDate(timeLeft)
               : mode === "short"
-              ? shortToDate(shortTimeLeft)
+              ? toDate(shortTimeLeft)
               : mode === "long"
-              ? longToDate(longTimeLeft)
+              ? toDate(longTimeLeft)
               : ""}
           </h4>
           <span
