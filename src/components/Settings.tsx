@@ -336,6 +336,9 @@ const Settings: React.FC = () => {
                 ? "toPurple"
                 : "",
           });
+          timerDispatch({
+            type: "handlingPause",
+          });
         }}
       >
         <button className="button-styles">Apply</button>
