@@ -264,7 +264,13 @@ const ShowTimer: React.FC = () => {
               ? longToDate(longTimeLeft)
               : ""}
           </h4>
-          <span className="pause">
+          <span
+            className={`pause ${
+              timeLeft < Number(startTime) && mode === "pomodoro"
+                ? "w-full ml-[15%]"
+                : ""
+            }`}
+          >
             {(timeLeft < Number(startTime) * 60 &&
               timeLeft > 0 &&
               mode === "pomodoro") ||
